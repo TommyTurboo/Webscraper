@@ -704,7 +704,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         html_file = sys.argv[1]
     else:
-        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Siemens_Output.txt"
+        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Siemens_5SY6Automaat.txt"
     
     print(f"📄 Input: {html_file}")
     

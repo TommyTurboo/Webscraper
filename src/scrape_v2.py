@@ -12,13 +12,15 @@ Features:
 """
 
 import argparse
+import json
 import os
 import random
 import re
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
@@ -48,10 +50,10 @@ Examples:
     url_group = parser.add_mutually_exclusive_group(required=True)
     url_group.add_argument('--url', help='Single URL to scrape')
     url_group.add_argument('--urls', help='Path to text file with URLs (one per line)')
-    
-    # Output settings
+      # Output settings
     parser.add_argument('--out', default='output', help='Output folder (default: output)')
-    
+    parser.add_argument('--json', action='store_true', help='Generate JSON files in addition to HTML')
+    parser.add_argument('--json-only', action='store_true', help='Generate only JSON files (no HTML)')
     # Wait settings
     parser.add_argument('--wait', type=int, default=0, help='Extra wait time in ms after page load (default: 0)')
     parser.add_argument('--selector', help='CSS selector to wait for before scraping')
@@ -158,6 +160,60 @@ def get_random_user_agent() -> str:
         return 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
 
+def extract_page_metadata(page, url: str) -> Dict[str, Any]:
+    """
+    Extract useful metadata from the page for JSON output.
+    """
+    try:
+        metadata = {
+            "title": page.title(),
+            "url": url,
+            "final_url": page.url,  # In case of redirects
+        }
+        
+        # Try to extract common meta tags
+        try:
+            metadata["description"] = page.eval_on_selector(
+                'meta[name="description"]', 
+                'el => el.content',
+                timeout=1000
+            )
+        except:
+            metadata["description"] = None
+        
+        try:
+            metadata["keywords"] = page.eval_on_selector(
+                'meta[name="keywords"]', 
+                'el => el.content',
+                timeout=1000
+            )
+        except:
+            metadata["keywords"] = None
+        
+        # Try to extract Open Graph tags
+        try:
+            metadata["og_title"] = page.eval_on_selector(
+                'meta[property="og:title"]', 
+                'el => el.content',
+                timeout=1000
+            )
+        except:
+            metadata["og_title"] = None
+        
+        try:
+            metadata["og_description"] = page.eval_on_selector(
+                'meta[property="og:description"]', 
+                'el => el.content',
+                timeout=1000
+            )
+        except:
+            metadata["og_description"] = None
+        
+        return metadata
+    except Exception as e:
+        return {"error": str(e), "url": url}
+
+
 def scrape_one_url(
     url: str,
     output_dir: str,
@@ -166,7 +222,9 @@ def scrape_one_url(
     selector: Optional[str],
     click_target: Optional[str],
     retries: int,
-    timeout: int
+    timeout: int,
+    generate_json: bool = False,
+    json_only: bool = False
 ) -> bool:
     """
     Scrape a single URL with retries.
@@ -239,13 +297,39 @@ def scrape_one_url(
                             random_delay(800, 1500)
                         except Exception as e:
                             print(f"  ⚠️  Could not click '{click_target}': {e}")
-                    
-                    # Wait for selector if specified
+                      # Wait for selector if specified
                     if selector:
                         print(f"  ⏳ Waiting for selector: {selector}")
                         page.wait_for_selector(selector, timeout=30000)
                     
-                    # Extra wait if specified
+                    # Scroll down to trigger lazy loading
+                    print(f"  📜 Scrolling to load lazy content...")
+                    page.evaluate("""
+                        async () => {
+                            await new Promise((resolve) => {
+                                let totalHeight = 0;
+                                let distance = 100;
+                                let scrollDelay = 100;
+                                
+                                let timer = setInterval(() => {
+                                    let scrollHeight = document.body.scrollHeight;
+                                    window.scrollBy(0, distance);
+                                    totalHeight += distance;
+                                    
+                                    if(totalHeight >= scrollHeight){
+                                        clearInterval(timer);
+                                        // Scroll back to top
+                                        window.scrollTo(0, 0);
+                                        resolve();
+                                    }
+                                }, scrollDelay);
+                            });
+                        }
+                    """)
+                    
+                    # Extra wait after scrolling to ensure content is loaded
+                    random_delay(1000, 1500)
+                      # Extra wait if specified
                     if wait_ms > 0:
                         print(f"  ⏳ Extra wait: {wait_ms}ms")
                         time.sleep(wait_ms / 1000.0)
@@ -254,15 +338,34 @@ def scrape_one_url(
                     print(f"  📄 Extracting HTML...")
                     html = page.evaluate("() => document.documentElement.outerHTML")
                     
-                    # Generate safe filename
-                    filename = safe_filename_from_url(url)
-                    output_path = os.path.join(output_dir, filename)
+                    # Extract metadata for JSON
+                    metadata = extract_page_metadata(page, url)
                     
-                    # Save to file
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        f.write(html)
+                    # Generate safe filename base (without extension)
+                    filename_base = safe_filename_from_url(url).replace('.html', '')
                     
-                    print(f"  ✅ Saved: {output_path}")
+                    # Save HTML file (unless json-only mode)
+                    if not json_only:
+                        html_path = os.path.join(output_dir, f"{filename_base}.html")
+                        with open(html_path, 'w', encoding='utf-8') as f:
+                            f.write(html)
+                        print(f"  ✅ Saved HTML: {html_path}")
+                    
+                    # Save JSON file if requested
+                    if generate_json or json_only:
+                        json_data = {
+                            "url": url,
+                            "scraped_at": datetime.now().isoformat(),
+                            "metadata": metadata,
+                            "html": html if not json_only else None,  # Include HTML in JSON unless json-only
+                            "html_length": len(html),
+                            "success": True
+                        }
+                        
+                        json_path = os.path.join(output_dir, f"{filename_base}.json")
+                        with open(json_path, 'w', encoding='utf-8') as f:
+                            json.dump(json_data, f, indent=2, ensure_ascii=False)
+                        print(f"  ✅ Saved JSON: {json_path}")
                     
                     return True
                     
@@ -290,8 +393,7 @@ def scrape_one_url(
 def main():
     """Main entry point."""
     args = parse_args()
-    
-    # Banner
+      # Banner
     print("=" * 70)
     print("Playwright HTML Scraper (Anti-Bot Enhanced)")
     print("=" * 70)
@@ -300,6 +402,15 @@ def main():
     mode = "HEADLESS" if args.is_headless else "HEADFUL"
     print(f"🔧 Mode: {mode}")
     print(f"📁 Output: {args.out}")
+    
+    # Output format
+    if args.json_only:
+        print(f"📄 Output format: JSON only")
+    elif args.json:
+        print(f"📄 Output format: HTML + JSON")
+    else:
+        print(f"📄 Output format: HTML only")
+    
     print(f"🔁 Retries: {args.retries}")
     print(f"⏱️  Timeout: {args.timeout}ms")
     if args.wait > 0:
@@ -337,7 +448,9 @@ def main():
             selector=args.selector,
             click_target=args.click,
             retries=args.retries,
-            timeout=args.timeout
+            timeout=args.timeout,
+            generate_json=args.json,
+            json_only=args.json_only
         )
         
         if success:
