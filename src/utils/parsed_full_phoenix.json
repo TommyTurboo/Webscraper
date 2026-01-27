@@ -1,0 +1,449 @@
+{
+  "sourceDomain": "phoenix",
+  "base": {
+    "title": "PLC-RPT- 24DC/ 1- 1/ACT - Relay module - 1176847 | Phoenix Contact",
+    "productId": "Recently searched Login 0 No products in comparison Products Products overview Find a Distributor New products Product navigator for device connection technology Technologies Customer-specific solutions Configurators Sample service Product Compliance Cross Reference Search Automate Automation software Building automation Edge computing HMIs and IPCs Industrial communication PLCnext Technology PLCs (controllers) and I/Os Smart Services Connect Board-to-board connectors Cables and lines Connectors Distribution blocks and device terminal blocks Distributors, adapters, and conductor connectors Electronics housings PCB terminal blocks and PCB connectors Plug-in test system System cabling for controllers Terminal blocks Mark, assemble, and install Automatic tools Control cabinet accessories Crimp connectors Ferrules Hand tools Industrial lighting and signal technology Junction boxes and empty enclosures Marking material Printers Software for control cabinet building Workstation solutions Supply, charge, and protect Charging technology for e-mobility DC/DC converters and DC/AC inverters Device circuit breakers EMC filter Power supplies Protective relays for mains protection Redundancy modules Surge protection Uninterruptible power supplies (UPS) Switch, Measure and Monitor Contactor and power relay Energy monitoring I/O signal marshalling Motor starters and electronic switching devices Process indicators and field devices Relays and solid-state relays Safety relay modules and sensors Signal conditioners and measuring transducers Industries & Applications Overview Application examples from practice Sector coupling Educational solutions E-MOBILITY Overview Charging infrastructure Electric vehicles INFRASTRUCTURE Buildings Data Centers Railway industry POWER Battery storage systems Conventional power generation DC grids in industry Power transmission and distribution Solar power Wind power PROCESS INDUSTRY Power-to-X Process automation PRODUCTION, DEVICE AND SYSTEMS MANUFACTURING Automotive industry Control cabinet building Automated Guided Vehicles (AGV) Device manufacturers Electrical installations Machine building OTHER TOPICS Agriculture COMPLETE line Data connectors for smart networks Functional safety Industrial remote communication Industrial security Power reliability Video surveillance Company Overview The Phoenix Contact Group Careers Our culture and attitude All Electric Society Compliance Sustainability History Suppliers Events &  News Overview Events & trade fairs News Service & Support Overview Catalogs and brochures Contact PLCnext Community Inform Frequently Asked Questions Information for device manufacturers Product changes and discontinuations Consult and Plan Customer-specific solutions Engineering Data for control cabinet building Engineering Data for PCB Components Configurators Procure and Deliver E-Business Sample service for device manufacturers Install and Operate Services for marking solutions Returns and complaints Product Security Incident Response Team My Phoenix Contact Login / Register Registration Benefits Shopping cart My orders My quotes and contracts My Product Lists My Comparison Home Products Relays and solid-state relays Coupling relays Highly compact relay modules PLC-RPT- 24DC/ 1- 1/ACT - Relay module PLC-RPT- 24DC/ 1- 1/ACT - Relay module 1176847 PLC-INTERFACE for output functions, consisting of PLC-BPT…/ACT basic terminal block with Push-in connection and plug-in miniature relay with power contact, for mounting on DIN rail NS 35/7,5, 2 N/O contacts (1-1), input voltage 24 V DC Product details Expand all Collapse all Technical data Product properties Product family PLC-INTERFACE Application Output function Operating mode 100% operating factor Mechanical service life 3x 10 7 cycles Insulation characteristics: Air clearances and creepage distances between the power circuits Insulation Basic insulation Overvoltage category III Pollution degree 2 Data management status Date of last data management 12.09.2025 Electrical properties Maximum power dissipation for nominal condition 0.43 W Test voltage (Winding/contact) 4 kV rms (50 Hz, 1 min.) Test voltage (open contact) 1 kV rms (50 Hz, 1 min.) Test voltage (N/O contact / N/O contact) 2.5 kV rms (50 Hz, 1 min.) Air clearances and creepage distances between the power circuits Rated insulation voltage 250 V AC Rated surge voltage 4 kV (Safe isolation, reinforced insulation, and 6 kV between input circuit and output contact current paths) Input data Coil side Nominal input voltage U N 24 V DC Input voltage range 20.2 V DC ... 33.6 V DC (20 °C) Nominal voltage (plugged-in electromechanical relay) 24 V DC Drive and function monostable Drive (polarity) polarized Typical input current at U N 18 mA Input power dissipation for U N 0.43 W Typical response time 8 ms Typical release time 10 ms Protective circuit Reverse polarity protection; Polarity protection diode Freewheeling diode; Freewheeling diode Operating voltage display Yellow LED Output data Switching Contact switching type 2 N/O contacts Type of switch contact Single contact Contact material AgNi Maximum switching voltage 250 V AC/DC (The separating plate PLC-ATP should be installed for voltages larger than 250 V (L1, L2, L3) between identical terminal blocks in adjacent modules. Potential bridging is then carried out with FBST 8-PLC... or ...FBST 500...) Minimum switching voltage 5 V (10 mA) Limiting continuous current 6 A Maximum inrush current 25 A (20 ms) Min. switching current 10 mA (5 V) Interrupting rating (ohmic load) max. 144 W (24 V DC) 96 W (48 V DC) 60 W (60 V DC) 44 W (110 V DC) 60 W (220 V DC) 1500 VA (250 V AC) Switching power min. 50 mW Switching capacity 2 A (24 V (DC13)) 0.2 A (250 V (DC-13)) 3 A (24 V (AC15)) 3 A (120 V (AC15)) 3 A (250 V (AC15)) Connection data Connection method Push-in connection Stripping length 10 mm Conductor cross-section rigid 0.14 mm² ... 2.5 mm² Conductor cross-section flexible 0.2 mm² ... 2.5 mm² 2x 0.5 mm² ... 1 mm² (TWIN ferrule) Conductor cross-section AWG 26 ... 14 Dimensions Width 14 mm Height 80 mm Depth 94 mm Material specifications Color gray (RAL 7042) Flammability rating according to UL 94 (Housing) V0 (Housing) Environmental and real-life conditions Ambient conditions Degree of protection (Relay) RT III Degree of protection (Relay base) IP20 Degree of protection (Installation location) ≤ IP54 Ambient temperature (operation) -40 °C ... 70 °C Ambient temperature (storage/transport) -40 °C ... 85 °C Altitude ≤ 2000 m EMC data Electromagnetic compatibility Conformance with EMC directive Low Voltage Directive Conformance with Low Voltage Directive Standards and regulations Standards/regulations Standards/regulations IEC 61810-1 Air clearances and creepage distances between the power circuits Standards/regulations IEC 60947-5-1 Mounting Mounting type DIN rail mounting Assembly note in rows with zero spacing Mounting position any Commercial data Item number 1176847 Packing unit 10 pc Minimum order quantity 1 pc Sales key DK62B8 Product key DK62B8 GTIN 4063151207779 Weight per piece (including packing) 70,7 g Weight per piece (excluding packing) 56,8 g Customs tariff number 85364190 Country of origin DE Classifications ECLASS ECLASS-13.0 27371601 ECLASS-15.0 27371601 ETIM ETIM 10.0 EC001437 UNSPSC UNSPSC 21.0 39122300 Approvals  cULus Listed Approval ID: E140324 Environmental product compliance EU RoHS Fulfills EU RoHS substance requirements Yes Exemption 7(a), 7(c)-I China RoHS Environment friendly use period (EFUP) EFUP-50 An article-related China RoHS declaration table can be found in the download area for the respective article under \"Manufacturer declaration\". For all articles with EFUP-E, no China RoHS declaration table issued and required. EU REACH SVHC REACH candidate substance (CAS No.) Hexahydromethylphthalic anhydride (CAS: n/a) Lead (CAS: 7439-92-1) SCIP fc5cfd1c-804d-4475-8586-eecbe26fa335 Compatible products Expand all Collapse all Accessories Note: Applying some accessories below might limit this product. FBST 500-PLC RD - Continuous plug-in bridge 2966786 Max. current carrying capacity 32 A FBST 500-PLC BU - Continuous plug-in bridge 2966692 Max. current carrying capacity 32 A FBST 500-PLC GY - Continuous plug-in bridge 2966838 Max. current carrying capacity 32 A FBST   6-PLC RD - Single plug-in bridge 2966236 Max. current carrying capacity 6 A FBST   6-PLC BU - Single plug-in bridge 2966812 Max. current carrying capacity 6 A FBST   6-PLC GY - Single plug-in bridge 2966825 Max. current carrying capacity 6 A FBST   8-PLC GY - Single plug-in bridge 2967688 Max. current carrying capacity 6 A FBST  14-PLC BK - Single plug-in bridge 2967691 Max. current carrying capacity 10 A PLC-V8L/FLK14/OUT - System connection 2299660 PLC-V8L/FLK14/OUT/M - System connection 2304306 ZB 10:UNBEDRUCKT - Zack marker strip 1053001 ZB 10 CUS - Zack marker strip 0824941 ZB10,LGS:FORTL.ZAHLEN - Zack marker strip 1053014 ZB10,QR:FORTL.ZAHLEN - Zack marker strip 1053027 ZB10,LGS:L1-N,PE - Marker for terminal blocks 1053412 ZB10,LGS:U-N - Marker for terminal blocks 1053438 UC-TM 10 - Marker for terminal blocks 0818069 UC-TM 10 CUS - Marker for terminal blocks 0824605 UCT-TM 10 - Marker for terminal blocks 0829142 UCT-TM 10 CUS - Marker for terminal blocks 0829623 ZB 12:UNPRINTED - Zack marker strip 0812120 ZB 12 CUS - Zack marker strip 0824942 ZB 12,LGS:L1-N,PE - Zack marker strip 0812146 UC-TM 12 - Marker for terminal blocks 0819194 UC-TM 12 CUS - Marker for terminal blocks 0824613 UCT-TM 12 - Marker for terminal blocks 0829144 UCT-TM 12 CUS - Marker for terminal blocks 0829630 NS 35/ 7,5 PERF 2000MM - DIN rail perforated 0801733 NS 35/ 7,5 UNPERF 2000MM - DIN rail, unperforated 0801681 NS 35/ 7,5 WH PERF 2000MM - DIN rail perforated 1204119 NS 35/ 7,5 WH UNPERF 2000MM-VPE 10 - DIN rail, unperforated 1204122 NS 35/ 7,5 AL UNPERF 2000MM - DIN rail, unperforated 0801704 NS 35/ 7,5 ZN PERF 2000MM - DIN rail perforated 1206421 NS 35/ 7,5 ZN UNPERF 2000MM - DIN rail, unperforated 1206434 NS 35/ 7,5 CU UNPERF 2000MM-VPE 10 - DIN rail, unperforated 0801762 NS 35/ 7,5 CAP - End cap 1206560 NS 35/15 PERF 2000MM - DIN rail perforated 1201730 NS 35/15 UNPERF 2000MM - DIN rail, unperforated 1201714 NS 35/15 WH PERF 2000MM - DIN rail perforated 0806602 NS 35/15 WH UNPERF 2000MM-VPE 10 - DIN rail, unperforated 1204135 NS 35/15 AL UNPERF 2000MM - DIN rail, unperforated 1201756 NS 35/15 ZN PERF 2000MM - DIN rail perforated 1206599 NS 35/15 ZN UNPERF 2000MM - DIN rail, unperforated 1206586 NS 35/15 CU UNPERF 2000MM-VPE 10 - DIN rail, unperforated 1201895 NS 35/15 CAP - End cap 1206573 NS 35/15-2,3 UNPERF 2000MM-VPE 10 - DIN rail, unperforated 1201798 PLC-ATP BK - Separating plate 2966841 PLC-ESK GY - Power terminal block 2966508 SZF 1-0,6X3,5 - Screwdriver 1204517 REL-MR- 24DC/21-21 - Single relay 2961192 Your advantages Actuator connected directly to relay module Efficient connection to system cabling using V8 adapter No need for additional modular terminal blocks Time savings of up to 60 % Relay modules with safe isolation according to DIN EN 50178 between coil and contact Space savings of up to 80 % Functional plug-in bridges Where Can I Buy This Item? Product Help PHOENIX CONTACT nv/sa Minervastraat 10-12, 1930 Zaventem Ask a question +32 (0)2/723 98 11 info@phoenixcontact.be © 2026 Phoenix Contact Site notice Legal information Data privacy Whistleblowing system Digital Services Act Privacy Settings Tell Us What You Think",
+    "description": "PLC-INTERFACE for output functions, consisting of PLC-BPT…/ACT basic terminal block with Push-in connection and plug-in miniature relay with power contact, for mounting on DIN rail NS 35/7,5, 2 N/O contacts (1-1), input voltage 24 V DC",
+    "canonical": "https://www.phoenixcontact.com/en-be/products/relay-module-plc-rpt-24dc-1-1-act-1176847",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "description": "PLC-INTERFACE for output functions, consisting of PLC-BPT…/ACT basic terminal block with Push-in connection and plug-in miniature relay with power contact, for mounting on DIN rail NS 35/7,5, 2 N/O contacts (1-1), input voltage 24 V DC",
+      "og:image": "https://caas.phoenixcontact.com/caas/v1/stable/media/259038/full/b408?format=jpg",
+      "og:image:width": "408",
+      "og:image:height": "408",
+      "og:image:type": "image/jpeg",
+      "crisp-metrics": "pr-pdp"
+    },
+    "jsonld": []
+  },
+  "images": [
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/168884/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/158928/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/259038/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/168884/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/245614/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/46250/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/198316/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/251174/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/252588/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/197372/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/214486/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/46250/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/232548/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/46250/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/46250/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/263440/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/39902/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/259038/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/114616/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/15430/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/243720/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/263468/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/118988/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/235260/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/259038/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/265996/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/95552/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/272334/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/261876/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/134264/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/39902/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/195790/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/168884/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/106918/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/259038/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/95552/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/106918/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/269576/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/211254/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/193836/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/201852/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/119022/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/206624/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/256274/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/39902/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/95552/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/195640/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/134264/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/168884/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/134264/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/216300/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/12162/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/158928/full/b250?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/27690/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/158928/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/230200/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/251498/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/11838/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/124504/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/213058/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/134264/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/220472/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/248026/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/106918/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/251524/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/122930/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/106918/full/b250?format=jpg",
+    "//static.phoenixcontact.com/common/assets/images/signal-chain.svg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/202286/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/95552/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/39902/full/b408?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/254896/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/252614/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/158928/full/b148?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/199420/full/b1500?format=jpg",
+    "https://caas.phoenixcontact.com/caas/v1/stable/media/243750/full/b1500?format=jpg"
+  ],
+  "specs": {
+    "Product family": "PLC-INTERFACE",
+    "Application": "Output function",
+    "Operating mode": "100% operating factor",
+    "Mechanical service life": "3x 10 7 cycles",
+    "Insulation": "Basic insulation",
+    "Overvoltage category": "III",
+    "Pollution degree": "2",
+    "Date of last data management": "12.09.2025",
+    "Maximum power dissipation for nominal condition": "0.43 W",
+    "Test voltage (Winding/contact)": "4 kV rms (50 Hz, 1 min.)",
+    "Test voltage (open contact)": "1 kV rms (50 Hz, 1 min.)",
+    "Test voltage (N/O contact / N/O contact)": "2.5 kV rms (50 Hz, 1 min.)",
+    "Rated insulation voltage": "250 V AC",
+    "Rated surge voltage": "4 kV (Safe isolation, reinforced insulation, and 6 kV between input circuit and output contact current paths)",
+    "Nominal input voltage U N": "24 V DC",
+    "Input voltage range": "20.2 V DC ... 33.6 V DC (20 °C)",
+    "Nominal voltage (plugged-in electromechanical relay)": "24 V DC",
+    "Drive and function": "monostable",
+    "Drive (polarity)": "polarized",
+    "Typical input current at U N": "18 mA",
+    "Input power dissipation for U N": "0.43 W",
+    "Typical response time": "8 ms",
+    "Typical release time": "10 ms",
+    "Protective circuit": "Reverse polarity protection; Polarity protection diode",
+    "Operating voltage display": "Yellow LED",
+    "Contact switching type": "2 N/O contacts",
+    "Type of switch contact": "Single contact",
+    "Contact material": "AgNi",
+    "Maximum switching voltage": "250 V AC/DC (The separating plate PLC-ATP should be installed for voltages larger than 250 V (L1, L2, L3) between identical terminal blocks in adjacent modules. Potential bridging is then carried out with FBST 8-PLC... or ...FBST 500...)",
+    "Minimum switching voltage": "5 V (10 mA)",
+    "Limiting continuous current": "6 A",
+    "Maximum inrush current": "25 A (20 ms)",
+    "Min. switching current": "10 mA (5 V)",
+    "Interrupting rating (ohmic load) max.": "144 W (24 V DC)",
+    "Switching power min.": "50 mW",
+    "Switching capacity": "2 A (24 V (DC13))",
+    "Connection method": "Push-in connection",
+    "Stripping length": "10 mm",
+    "Conductor cross-section rigid": "0.14 mm² ... 2.5 mm²",
+    "Conductor cross-section flexible": "0.2 mm² ... 2.5 mm²",
+    "Conductor cross-section AWG": "26 ... 14",
+    "Width": "14 mm",
+    "Height": "80 mm",
+    "Depth": "94 mm",
+    "Color": "gray (RAL 7042)",
+    "Flammability rating according to UL 94 (Housing)": "V0 (Housing)",
+    "Degree of protection (Relay)": "RT III",
+    "Degree of protection (Relay base)": "IP20",
+    "Degree of protection (Installation location)": "≤ IP54",
+    "Ambient temperature (operation)": "-40 °C ... 70 °C",
+    "Ambient temperature (storage/transport)": "-40 °C ... 85 °C",
+    "Altitude": "≤ 2000 m",
+    "Electromagnetic compatibility": "Conformance with EMC directive",
+    "Low Voltage Directive": "Conformance with Low Voltage Directive",
+    "Standards/regulations": "IEC 61810-1",
+    "Mounting type": "DIN rail mounting",
+    "Assembly note": "in rows with zero spacing",
+    "Mounting position": "any"
+  },
+  "commercial": {
+    "Item number": "1176847",
+    "Packing unit": "10 pc",
+    "Minimum order quantity": "1 pc",
+    "Sales key": "DK62B8",
+    "Product key": "DK62B8",
+    "GTIN": "4063151207779",
+    "Weight per piece (including packing)": "70,7 g",
+    "Weight per piece (excluding packing)": "56,8 g",
+    "Customs tariff number": "85364190",
+    "Country of origin": "DE"
+  },
+  "downloads": [],
+  "rawHtmlFile": "Relay.html",
+  "embeddedJson": [
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var Xa;fb=(null===(Xa=document.currentScript)||void 0===Xa?void 0:Xa.getAttribute(\"data-dtconfig\"))||\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\";\nfb=(Xa=null==ta?void 0:ta.minAgentVersion)&&\"10327251022105625\"<`${Xa}`?(console.log(\"[CookiePrefix/initConfig] Min agent version detected, and javascript agent is older - the javascript agent will not be initialized!\"),!1):Ga&&!fb.includes(`cuc=${Ga}`)?(console.log(`[CookiePrefix/initConfig] value of platformPrefix [${Ga}] does not match the \"cuc\" value in the current config - initConfig will not initialize!`),!1):!0}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{cfg:\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\",\niCE:ab,platformCookieOffset:null==ta?void 0:ta.platformCookieOffset}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n        if (l.href.endsWith('base.css')) {\n          link = l;\n        }\n      }",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\"pageType\":\"Product Detail Page\",\"gcid\":\"1176847\",\"positions\":\"\",\"breadcrumb\":\"Home > Products > Relays and solid-state relays > Coupling relays > Highly compact relay modules > PLC-RPT- 24DC/ 1- 1/ACT - 1176847\",\"comparedArticles\":\"\",\"categoryLevel\":\"\"}",
+      "parsed": {
+        "pageType": "Product Detail Page",
+        "gcid": "1176847",
+        "positions": "",
+        "breadcrumb": "Home > Products > Relays and solid-state relays > Coupling relays > Highly compact relay modules > PLC-RPT- 24DC/ 1- 1/ACT - 1176847",
+        "comparedArticles": "",
+        "categoryLevel": ""
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{}",
+      "parsed": {},
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\"ak.v\":\"39\",\"ak.cp\":\"500990\",\"ak.ai\":parseInt(\"329193\",10),\"ak.ol\":\"0\",\"ak.cr\":20,\"ak.ipv\":4,\"ak.proto\":\"h2\",\"ak.rid\":\"4154393e\",\"ak.r\":36907,\"ak.a2\":n,\"ak.m\":\"a\",\"ak.n\":\"essl\",\"ak.bpcip\":\"83.134.215.0\",\"ak.cport\":62604,\"ak.gh\":\"81.243.1.237\",\"ak.quicv\":\"\",\"ak.tlsv\":\"tls1.3\",\"ak.0rtt\":\"\",\"ak.0rtt.ed\":\"\",\"ak.csrc\":\"-\",\"ak.acc\":\"\",\"ak.t\":\"1768075366\",\"ak.ak\":\"hOBiQwZUYzCg5VSAfCLimQ==BWQBJRa53pPV3cNOzcaCDsIvDSm8nL6k17qxJLbStOjQyrjk6vswu6ML3oUaacZpQPFeuiJK0pm2pXeOdHx+eS1UkonnLaHPatglKmq50Io+I2GvGCdDXg76x57zWSvkcs0zwE9K1RkKRGBXmC7HVzVy9s+4YlHTqFzWioIUspRtzI/y8H1Y1xnnfRuTHUi56zWjNhmDypPBwF+m5yjwZjgo0zdrGVoBjH19QYyNEt3A4d32v/tXRs/FoHJipKU2AGMHeBIH2G335kZzIq+Xc7PQA4d8HTz1pi53wlgKmSCNzrIDALP6gznwi0/c9Jm9EC312o1S3ulNxGt/HERqQduE47CNBJe4rmmGOpXFeYRVq1f/X7/FMZ6g5rzuudIrJzwHArAkXcx7c9PnI62MCEfGGA20pVk9g4vFRZdBSVc=\",\"ak.pv\":\"661\",\"ak.dpoabenc\":\"\",\"ak.tf\":i}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n          event: 'ga4Event',\n          event_name: 'navigation',\n          navigation: {\n            type: 'Header Secondary',\n            item: 'Login',\n            event_category: 'Navigation',\n            event_action: 'Header Secondary',\n            event_label: 'Login',\n            message_key: undefined,\n            message_type: undefined\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "navigation",
+        "navigation": {
+          "type": "Header Secondary",
+          "item": "Login",
+          "event_category": "Navigation",
+          "event_action": "Header Secondary",
+          "event_label": "Login",
+          "message_key": null,
+          "message_type": null
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\n          event: 'ga4Event',\n          event_name: 'navigation',\n          navigation: {\n            type: 'Header Secondary',\n            item: 'Login',\n            event_category: 'Navigation',\n            event_action: 'Header Secondary',\n            event_label: 'Login',\n            message_key: undefined,\n            message_type: undefined\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "navigation",
+        "navigation": {
+          "type": "Header Secondary",
+          "item": "Login",
+          "event_category": "Navigation",
+          "event_action": "Header Secondary",
+          "event_label": "Login",
+          "message_key": null,
+          "message_type": null
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n          event: 'ga4Event',\n          event_name: 'navigation',\n          navigation: {\n            type: 'Header Main',\n            item: 'Login',\n            event_category: 'Navigation',\n            event_action: 'Header Main',\n            event_label: 'Login / Register',\n            message_key: undefined,\n            message_type: undefined\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "navigation",
+        "navigation": {
+          "type": "Header Main",
+          "item": "Login",
+          "event_category": "Navigation",
+          "event_action": "Header Main",
+          "event_label": "Login / Register",
+          "message_key": null,
+          "message_type": null
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\n          event: 'ga4Event',\n          event_name: 'navigation',\n          navigation: {\n            type: 'Header Main',\n            item: 'Login',\n            event_category: 'Navigation',\n            event_action: 'Header Main',\n            event_label: 'Login / Register',\n            message_key: undefined,\n            message_type: undefined\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "navigation",
+        "navigation": {
+          "type": "Header Main",
+          "item": "Login",
+          "event_category": "Navigation",
+          "event_action": "Header Main",
+          "event_label": "Login / Register",
+          "message_key": null,
+          "message_type": null
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n          event: \"ga4Event\",\n          event_name: \"logout\",\n          logout: {\n            event_category: \"Login\",\n            event_action: \"Logout\",\n            event_label: undefined,\n            message_key: \"logout\",\n            message_type: \"info\"\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "logout",
+        "logout": {
+          "event_category": "Login",
+          "event_action": "Logout",
+          "event_label": null,
+          "message_key": "logout",
+          "message_type": "info"
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\n          event: \"ga4Event\",\n          event_name: \"logout\",\n          logout: {\n            event_category: \"Login\",\n            event_action: \"Logout\",\n            event_label: undefined,\n            message_key: \"logout\",\n            message_type: \"info\"\n          }\n        }",
+      "parsed": {
+        "event": "ga4Event",
+        "event_name": "logout",
+        "logout": {
+          "event_category": "Login",
+          "event_action": "Logout",
+          "event_label": null,
+          "message_key": "logout",
+          "message_type": "info"
+        }
+      },
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "['order-key']",
+      "parsed": [
+        "order-key"
+      ],
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var n=!1;e.addEventListener(\"beforeload\",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute(\"nomodule\")||!n)return;e.preventDefault()}),!0),t.type=\"module\",t.src=\".\",e.head.appendChild(t),t.remove()}",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n      if (!isSticky) {\n        functionBox.style.position = \"sticky\";\n        functionBox.style.top = `${offsetTop}px`;\n        functionBox.style.marginTop = \"0\";\n        functionBox.style.zIndex = \"1100\";\n      }\n      isSticky = true;\n    }",
+      "parsed": null,
+      "foundIn": "<script>"
+    },
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{var Xa;fb=(null===(Xa=document.currentScript)||void 0===Xa?void 0:Xa.getAttribute(\"data-dtconfig\"))||\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\";\nfb=(Xa=null==ta?void 0:ta.minAgentVersion)&&\"10327251022105625\"<`${Xa}`?(console.log(\"[CookiePrefix/initConfig] Min agent version detected, and javascript agent is older - the javascript agent will not be initialized!\"),!1):Ga&&!fb.includes(`cuc=${Ga}`)?(console.log(`[CookiePrefix/initConfig] value of platformPrefix [${Ga}] does not match the \"cuc\" value in the current config - initConfig will not initialize!`),!1):!0}",
+      "parsed": null,
+      "foundIn": "<html>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{cfg:\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\",\niCE:ab,platformCookieOffset:null==ta?void 0:ta.platformCookieOffset}",
+      "parsed": null,
+      "foundIn": "<html>"
+    },
+    {
+      "pattern": "SCRIPT_TAG_FALLBACK",
+      "raw": "{function ab(){var ta;(ta=void 0===bb.dialogArguments&&navigator.cookieEnabled)||(document.cookie=\"__dTCookie=1;SameSite=Lax\",ta=document.cookie.includes(\"__dTCookie\"),ta=(document.cookie=\"__dTCookie=1; expires=Thu, 01-Jan-1970 00:00:01 GMT\",ta));return ta}function Fa(){if(ab()){var ta=bb.dT_,Ga=null==ta?void 0:ta.platformPrefix,fb;if(fb=!ta||Ga){var Xa;fb=(null===(Xa=document.currentScript)||void 0===Xa?void 0:Xa.getAttribute(\"data-dtconfig\"))||\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\";\nfb=(Xa=null==ta?void 0:ta.minAgentVersion)&&\"10327251022105625\"<`${Xa}`?(console.log(\"[CookiePrefix/initConfig] Min agent version detected, and javascript agent is older - the javascript agent will not be initialized!\"),!1):Ga&&!fb.includes(`cuc=${Ga}`)?(console.log(`[CookiePrefix/initConfig] value of platformPrefix [${Ga}] does not match the \"cuc\" value in the current config - initConfig will not initialize!`),!1):!0}fb&&(ta={cfg:\"app=bbe13dc2592e73f4|coo=1|owasp=1|featureHash=A7NQVfhqrux|msl=153600|srsr=10000|srvr=%2Fcustomer|rdnt=1|uxrgce=1|cuc=8q4j8oni|srms=2,0,0,0%2F%23sc-my-profile;0%2Fsc-user-info__wrapper%26;0%2F%23od-order-overview-app;0%2Ftd.od-MyOrdersWidgetWebComponent__order-id%20;0%2Ftd.od-MyOrdersWidgetWebComponent__customer-id;0%2F%23cu-ask-question-phone;0%2F%23cu-ask-question-postal-code;0%2F%23cu-ask-question-email;0%2F%23cu-ask-question-name;0%2F%23cu-my-profile-page;0%2F%23cu-login;0%2F%23cu-crisp-switcher-account-switcher-single-account;0%2F%23cu-loggedin;0%2Fli.secondary-navigation__list-item.secondary-navigation__list-item--shopping-cart;0%2Fsc-user-info%26|mel=100000|dpvc=1|md=mdcc6=a[name='crisp-metrics']@content|lastModification=1765282743944|mdp=mdcc6|tp=500,50,0|srbbv=2|agentUri=/product/ruxitagentjs_A7NQVfhqrux_10327251022105625.js|reportUrl=/product/rb_bf52449gma|auto=1|domain=phoenixcontact.com|rid=RID_381138230|rpid=-499662070\",\niCE:ab,platformCookieOffset:null==ta?void 0:ta.platformCookieOffset},Ga&&(ta.platformPrefix=Ga),bb.dT_=ta)}}function Ya(ta){return\"function\"==typeof ta}function hb(){let ta=window.performance;return ta&&Ba&&Va&&!!ta.timeOrigin&&Ya(ta.now)&&Ya(ta.getEntriesByType)&&Ya(ta.getEntriesByName)&&Ya(ta.setResourceTimingBufferSize)&&Ya(ta.clearResourceTimings)}this.dT_&&dT_.prm&&dT_.prm();var bb=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:void 0,Va=\"function\"==typeof PerformanceResourceTiming||\n\"object\"==typeof PerformanceResourceTiming,Ba=\"function\"==typeof PerformanceNavigationTiming||\"object\"==typeof PerformanceNavigationTiming;if((!(\"documentMode\"in document)||Number.isNaN(document.documentMode))&&hb()){let ta=bb.dT_;!ta||!ta.cfg&&ta.platformPrefix?Fa():ta.gCP||(bb.console.log(\"Duplicate agent injection detected, turning off redundant initConfig.\"),ta.di=1)}}",
+      "parsed": null,
+      "foundIn": "<html>"
+    }
+  ],
+  "generatedAt": "2026-01-11T10:42:22.032082+00:00"
+}

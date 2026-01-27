@@ -1,0 +1,65 @@
+{
+  "sourceDomain": "schneider",
+  "base": {
+    "title": "A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve | Schneider Electric België",
+    "productId": "modulaire-automaat-ic60n-2-polen-25-a-d-curve",
+    "description": "Schneider Electric België. A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve.",
+    "canonical": "https://www.se.com/be/nl/product/A9F75225/modulaire-automaat-ic60n-2-polen-25-a-d-curve/",
+    "meta": {
+      "viewport": "width=device-width, initial-scale=1.0",
+      "og:site_name": "Schneider Electric",
+      "business-unit-name": "ENM HOME DISTRIBUTION",
+      "range-id": "7556",
+      "range-name": "Acti9 iC60",
+      "range-shortdesc": "Modulaire automaten tot 63 A",
+      "product-id": "A9F75225",
+      "title": "A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve | Schneider Electric België",
+      "description": "Schneider Electric België. A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve.",
+      "keywords": "A9F75225, Acti9 iC60",
+      "og:url": "https://www.se.com/be/nl/product/A9F75225/modulaire-automaat-ic60n-2-polen-25-a-d-curve/",
+      "og:title": "A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve | Schneider Electric België",
+      "og:description": "Schneider Electric België. A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve.",
+      "og:keyword": "A9F75225, Acti9 iC60",
+      "og:type": "website",
+      "og:locale": "nl_BE",
+      "og:image": "https://download.schneider-electric.com/files?p_Doc_Ref=A9F75210_Image_07&p_File_Type=rendition_1500_jpg",
+      "importmap-type": "systemjs-importmap"
+    },
+    "jsonld": []
+  },
+  "images": [
+    "https://www.se.com/be/nl/assets/v2/543/media/305815/Impact%20Co%20logo%20English%20Black-01-177x54.svg",
+    "https://www.se.com/be/nl/assets/v2/543/media/202250/SE_logo-LIO-white_header.svg",
+    "https://www.se.com/akam/13/pixel_617cb41?a=dD05Y2FiNmExMjM1ZTYzYTliZTQ3MGMzNjM0ZDQzODA5YTk3Njk0NzE1JmpzPW9mZg==",
+    "https://download.schneider-electric.com/files?p_Doc_Ref=A9F75210_Image_07&p_File_Type=rendition_1500_jpg",
+    "https://cdn.builder.io/api/v1/pixel?apiKey=87a13b564d504489a60e78515594f31e"
+  ],
+  "specs": {},
+  "commercial": {},
+  "downloads": [
+    "../../../../../_uce_/immutable/assets/ProductDataSheet.CgDEgNDp.css",
+    "https://download.schneider-electric.com/files?p_Doc_Ref=A9F75225_Image&p_File_Type=rendition_369_jpg&default_image=DefaultProductImage.png",
+    "https://download.schneider-electric.com",
+    "https://download.schneider-electric.com",
+    "https://download.schneider-electric.com/files?p_Doc_Ref=A9F75210_Image_07&p_File_Type=rendition_1500_jpg",
+    "https://www.se.com/be/nl/download/mylist/?",
+    "https://www.se.com/be/nl/download/mylist/?"
+  ],
+  "rawHtmlFile": "Automaatschneider.html.txt",
+  "embeddedJson": [
+    {
+      "pattern": "VAR_OBJECT",
+      "raw": "{\n  \"canonicalUrl\": \"/be/nl/product/A9F75225/modulaire-automaat-ic60n-2-polen-25-a-d-curve/\",\n  \"businessUnitName\": \"ENM HOME DISTRIBUTION\",\n  \"title\": \"A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve | Schneider Electric BelgiÃ«\",\n  \"description\": \"Schneider Electric BelgiÃ«. A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve.\",\n  \"keywords\": \"A9F75225, Acti9 iC60\",\n  \"rangeId\": \"7556\",\n  \"rangeName\": \"Acti9 iC60\",\n  \"rangeShortDesc\": \"Modulaire automaten tot 63 A\",\n  \"ogURL\": \"/be/nl/product/A9F75225/modulaire-automaat-ic60n-2-polen-25-a-d-curve/\",\n  \"currency\": \"EUR\",\n  \"productId\": \"A9F75225\",\n  \"nodeName\": \"\",\n  \"ogImageSource\": \"https://download.schneider-electric.com/files?p_Doc_Ref=A9F75210_Image_07&p_File_Type=rendition_1500_jpg\",\n  \"analyticsPageData\": {\n    \"articleTitle\": \"\",\n    \"businessUnit\": \"ENM HOME DISTRIBUTION\",\n    \"pageRangeId\": \"7556\",\n    \"pageCategoryId\": \"1600\",\n    \"pageSubCategoryId\": \"1605\",\n    \"pageSubCategory\": \"Products\",\n    \"pageProductId\": \"A9F75225\",\n    \"fromWebView\": false,\n    \"digitalPlatform\": \"SE Main site\",\n    \"digitalPlatformCountry\": \"BE\",\n    \"pageLanguage\": \"NL\",\n    \"environment\": \"Production\",\n    \"templateVirtual\": \"Products Virtual Pages\",\n    \"template\": \"Products\",\n    \"pageSubSubCategory\": \"\",\n    \"pageTopCategory\": \"Product Detail Page\",\n    \"pageCategory\": \"\",\n    \"pageTitle\": \"A9F75225 - modulaire automaat - iC60N - 2 polen - 25 A - D curve | Schneider Electric BelgiÃ«\"\n  },\n  \"googleAnalyticsLookup\": {\n    \"pesPageTypes\": {\n      \"allProducts\": \"All Products\",\n      \"countrySelector\": \"Country Selector\",\n      \"myProducts\": \"My Products\",\n      \"productCategoryListingPage\": \"Product Category Page\",\n      \"productCategoryPage\": \"Product Category Page\",\n      \"productComparator\": \"Product Comparator\",\n      \"productDetailPage\": \"Product Detail Page\",\n      \"productListing\": \"Product Listing\",\n      \"productRangeAZ\": \"Product Range A-Z\",\n      \"productRangePage\": \"Product Range Page\",\n      \"productSubcategoryPage\": \"Product Subcategory Page\"\n    },\n    \"productLists\": {\n      \"alternativeProducts\": \"alternative-products\",\n      \"comparedProducts\": \"compared-products\",\n      \"gridViewProducts\": \"grid-view-products\",\n      \"listViewProducts\": \"list-view-products\",\n      \"myProducts\": \"my-products\",\n      \"otherProductsFromSeries\": \"other-products-from-the-series\",\n      \"recentlyViewedProducts\": \"recently-viewed-products\",\n      \"relatedProducts\": \"related-products\",\n      \"relatedProductsModal\": \"related-products:$relatedsectionid\",\n      \"substituteProducts\": \"substitute-products\",\n      \"variants\": \"variants\",\n      \"cardViewSoftwareProducts\": \"card-view-software-products\"\n    },\n    \"virtualPageTypes\": {\n      \"allProductsBusinessLine\": \"tabs\",\n      \"modalWindow\": \"popin\",\n      \"pagination\": \"pagination\",\n      \"pillsOnCart\": \"tabs\",\n      \"tabsOnRange\": \"tabs\"\n    },\n    \"virtualPageName\": {\n      \"buyOnline\": \"buy-online\",\n      \"crossSaleProducts\": \"cross-sale-products\",\n      \"download\": \"download\",\n      \"downloadInstallationFile\": \"download-installation-file\",\n      \"filters\": \"filters\",\n      \"helpMeChoose\": \"help-me-choose\",\n      \"mainDocuments\": \"main-documents:$mainDocumentType\",\n      \"mediaGallery\": \"media-gallery\",\n      \"productSelector\": \"product-selector\",\n      \"relatedLifecycleServices\": \"related-lifecycle-services\",\n      \"relatedProducts\": \"related-products:$relatedSectionId\",\n      \"relatedSoftware\": \"related-software\",\n      \"seeConfigurator\": \"see-configurator\",\n      \"seeSoftware\": \"see-software\",\n      \"upSaleProducts\": \"up-sale-products\",\n      \"buyOnlineCircular\": \"buy-online:$circularType\"\n    },\n    \"pageTabs\": {\n      \"productCartAllItems\": \"All Items\",\n      \"productCartConfigurations\": \"Configurations\",\n      \"productCartSingleItems\": \"Single Items\",\n      \"rangeDocuments\": \"Documents tab\",\n      \"rangeOverview\": \"Overview tab\",\n      \"rangeProducts\": \"Products tab\",\n      \"rangeLicenses\": \"Software Licenses\",\n      \"rangeSoftwareRegistration\": \"Software registration tab\",\n      \"rangeUtilitiesAndFirmware\": \"Utilities and Firmware tab\",\n      \"rangeWebinarAndResources\": \"Webinars and Resources tab\"\n    },\n    \"addCartLocation\": {\n      \"ctaBar\": \"cta-bar\",\n      \"productMain\": \"product-main\",\n      \"productSelector\": \"product-selector\",\n      \"stickyBar\": \"sticky-bar\"\n    },\n    \"addCartCTAType\": {\n      \"buttonGroupOfProducts\": \"button:group-of-products\",\n      \"buttonSingleProduct\": \"button:single-product\",\n      \"quantityControl\": \"quantity-control\"\n    },\n    \"cartActionCTA\": {\n      \"buy-near-you\": \"buyNearYou\",\n      \"buyInStore\": \"buy-in-store\",\n      \"buyOnline\": \"buy-online\",\n      \"callForPricing\": \"call-for-pricing\",\n      \"configurationFilesDownloadAsXml\": \"configuration-files_download-as-xml\",\n      \"contactSales\": \"contact-sales\",\n      \"findElectrician\": \"find-electrician\",\n      \"getPricing\": \"get-pricing\",\n      \"productDatasheetsDownloadAsPDF\": \"product-datasheets_download-as-pdf\",\n      \"productListDownloadAsExcel\": \"product-list_download-as-excel\",\n      \"productListDownloadAsPDF\": \"product-list_download-as-pdf\",\n      \"whereToBuy\": \"where-to-buy\"\n    },\n    \"oneTrustCode\": \"21799d79-d173-421f-846e-c7cef429e7c9\"\n  },\n  \"bslDdcUrl\": \"https://download.schneider-electric.com\",\n  \"tagManagerURL\": \"//tagmanager.schneider-electric.com\",\n  \"tagManagerCDNURL\": \"//cdn.tagcommander.com\",\n  \"countryCode\": \"BE\",\n  \"languageCode\": \"nl\",\n  \"disableGoogleIndexation\": false,\n  \"brand\": \"se\",\n  \"skipProviderComment\": true,\n  \"analyticsEnabled\": true,\n  \"oneTrustSnippetsStatus\": \"enabled\",\n  \"gtmMigrationStatus\": \"enabled\",\n  \"gtmId\": \"GTM-MM5LXGL\",\n  \"pageHost\": \"https://www.se.com\"\n}",
+      "parsed": null,
+      "foundIn": "<html>"
+    },
+    {
+      "pattern": "BIG_OBJECT_FALLBACK",
+      "raw": "{\n  \"Widgets\": {\n    \"se3dWidget\": {\n      \"interactive-animations\": \"false\",\n      \"language\": \"en\"\n    },\n    \"se360Widget\": {\n      \"language\": \"en\"\n    }\n  },\n  \"FeatureFlags\": {\n    \"unifiedCheckout\": {\n      \"status\": \"disabled\",\n      \"batchAddToCart\": true,\n      \"environment\": \"\",\n      \"page\": \"\"\n    },\n    \"outsourcedSubstitutions\": {\n      \"status\": \"disabled\"\n    },\n    \"builderArticleSlideCarousel\": {\n      \"status\": \"enabled\"\n    },\n    \"builderFlexibleBlocks\": {\n      \"status\": \"enabled\"\n    },\n    \"builderPromotionBanner\": {\n      \"status\": \"disabled\"\n    },\n    \"hyperPersonalization\": {\n      \"status\": \"disabled\"\n    },\n    \"oneTrustSnippetsStatus\": \"enabled\",\n    \"gtmMigrationStatus\": \"enabled\"\n  },\n  \"API\": {\n    \"list\": [\n      {\n        \"name\": \"spryker-products-all\",\n        \"version\": \"3.0\",\n        \"requestTimeout\": 30000,\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/vnd.api+json\",\n            \"Content-Type\": \"application/vnd.api+json\"\n          }\n        }\n      },\n      {\n        \"name\": \"spryker-default\",\n        \"version\": \"1.0\",\n        \"requestTimeout\": 30000,\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/vnd.api+json\",\n            \"Content-Type\": \"application/vnd.api+json\"\n          }\n        }\n      },\n      {\n        \"name\": \"apigee-default\",\n        \"version\": \"1.0\",\n        \"requestTimeout\": 30000,\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/json\",\n            \"Content-Type\": \"application/json\"\n          }\n        }\n      },\n      {\n        \"name\": \"apigee-recommendations\",\n        \"host\": \"https://2ier96sc89.execute-api.us-east-1.amazonaws.com\",\n        \"version\": \"1.0\",\n        \"requestTimeout\": 30000,\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/json\",\n            \"Content-Type\": \"application/json\"\n          }\n        }\n      },\n      {\n        \"name\": \"hmc-default\",\n        \"host\": \"https://hmc.se.com\",\n        \"requestTimeout\": 30000,\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/json\",\n            \"Content-Type\": \"application/json\"\n          }\n        }\n      },\n      {\n        \"name\": \"spryker-product-card-main\",\n        \"requestTimeout\": 30000,\n        \"version\": \"3.0\",\n        \"maxRetries\": 0,\n        \"standardSettings\": {\n          \"redirect\": \"follow\",\n          \"headers\": {\n            \"Accept\": \"application/vnd.api+json\",\n            \"Content-Type\": \"application/vnd.api+json\"\n          }\n        }\n      }\n    ]\n  }\n}",
+      "parsed": null,
+      "foundIn": "<html>"
+    }
+  ],
+  "plainAllData": null,
+  "generatedAt": "2026-01-11T11:00:12.908770+00:00"
+}

@@ -1,0 +1,183 @@
+# ═══════════════════════════════════════════════════════════════
+# VENDOR CONFIGURATIES - Configuration-Driven Scraper
+# ═══════════════════════════════════════════════════════════════
+# 
+# Elke vendor heeft:
+#   - detect: Regels om te detecteren of HTML van deze vendor is
+#   - specs: Configuratie voor data extractie
+#
+# Detectie types:
+#   - id: "element-id"
+#   - selector: "css-selector"
+#   - class_contains: "partial-class-name"
+#   - text_contains: "zoek tekst in page"
+#
+# Spec types:
+#   - type: "rows"      → Rij-gebaseerd (key-value per row)
+#   - type: "li_split"  → LI elementen splitsen op newline
+#   - type: "table"     → Tabel extractie
+#   - type: "dl"        → Definition lists
+# ═══════════════════════════════════════════════════════════════
+
+siemens:
+  name: "Siemens"
+  priority: 10
+  
+  detect:
+    - selector: "sie-ps-commercial-data"
+    - selector: "sie-ps-technical-data"
+    - id: "specifications"
+  
+  specs:
+    # 1. Extractie uit Technical Data table
+    - type: "table"
+      container: "sie-ps-technical-data"
+      tables: "table.TEPreviewTable"
+      extract_mode: "key_value"  # Elke rij = key-value pair
+      key_column: 1  # Tweede kolom (0-indexed) = attribute-name
+      value_column: 2  # Derde kolom = waarde
+      skip_rows_with_class: "hc"  # Skip header rows (class="hc")
+      
+    # 2. Extractie uit Commercial Data (mogelijk ook table)
+    - type: "table"
+      container: "sie-ps-commercial-data"
+      tables: "table"
+      
+    # 3. FALLBACK: Li-items (voor andere Siemens pagina's)
+    - type: "li_split"
+      container: "#specifications"
+      section_headers: ["h3", "h4"]
+      items: "li"
+      split_on: "\n"
+      skip_texts:
+        - "commercial data"
+        - "technical data"
+        - "productdetails"
+
+vega:
+  name: "VEGA"
+  priority: 35  # ← VERHOOG deze (hoger = later checken)
+  
+  detect:
+    - class_contains: "characteristic-title"  # ← Specifieker maken
+    - class_contains: "technical-data-content"
+  
+  specs:
+    - type: "rows"
+      rows: "div.characteristic"
+      key: ".characteristic-title"
+      value: "li.characteristic-value"
+      multiple_values: true
+      remove_noise:
+        - ".unit-choices"
+        - ".unit-choice"
+        - ".unit-choice-spacer"
+
+nexans:
+  name: "Nexans"
+  priority: 30
+  
+  detect:
+    - class_contains: "list-characteristics__row"
+    - text_contains: "nexans ref"
+  
+  specs:
+    # 1. Product variants (uit productlijst)
+    - type: "product_variants"
+      container: "body"
+      variant_selector: ".product__list__item"
+      fields:
+        title: ".product__list__item__title"
+        ref: ".product__list__item__ref"
+        url: ".product__list__item__title a"
+        specs:
+          rows: ".list-label__item"
+          key: ".list-label__item__label"
+          value: ".list-label__item"
+    
+    # 2. Karakteristieken (uit detail pagina)
+    - type: "rows"
+      rows: ".list-characteristics__row"
+      key: ".list-characteristics__title"
+      value: ".list-characteristics__desc"
+      multiple_values: false
+
+phoenix:
+  name: "Phoenix Contact"
+  priority: 40
+  
+  detect:
+    - text_contains: "phoenix contact"
+    - class_contains: "productdetails"
+  
+  specs:
+    - type: "table"
+      container: ".productdetails"
+      tables: "table"
+    
+    - type: "dl"
+      container: ".specifications"
+
+schneider:
+  name: "Schneider Electric"
+  priority: 20
+  
+  detect:
+    - selector: "[plain-all-data]"  # Schneider gebruikt JSON-in-attribute
+    - text_contains: "schneider electric"
+    - class_contains: "schneider"
+  
+  specs:
+    # Schneider gebruikt een speciaal JSON-extractie type
+    - type: "schneider_json"
+      json_attribute: "plain-all-data"
+      json_selector: "[plain-all-data]"
+      extract:
+        product_id:
+          path: "base.productId"
+          fallback_path: "base.productCR"
+        variants:
+          path: "base.variants.chars"
+          extract_fields:
+            - "productId"
+        specifications:
+          path: "specifications.characteristicTables"
+          table_name_key: "tableName"
+          rows_key: "rows"
+          char_name_key: "characteristicName"
+          char_values_key: "characteristicValues"
+          label_key: "labelText"
+        description:
+          path: "specifications.longDescSentences"
+        metadata:
+          dataSheetTitle: "dataSheetTitle"
+          breadcrumbs: "breadcrumbs"
+
+# ═══════════════════════════════════════════════════════════════
+# GENERIEKE FALLBACK - Wordt gebruikt als geen vendor matcht
+# ═══════════════════════════════════════════════════════════════
+generic:
+  name: "Generic"
+  priority: 999  # Laagste prioriteit
+  
+  detect:
+    - always: true  # Altijd matchen als fallback
+  
+  specs:
+    # Probeer alle mogelijke patronen
+    - type: "dl"
+      container: "body"
+    
+    - type: "table"
+      container: "body"
+      tables: "table"
+    
+    - type: "label_value"
+      pattern: "^(.{2,80}):\\s*(.{1,200})$"
+      elements: ["p", "li", "div", "span"]
+    
+    - type: "li_split"
+      container: "body"
+      items: "li"
+      split_on: "\n"
+      min_parts: 2
