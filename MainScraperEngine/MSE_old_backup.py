@@ -3,7 +3,7 @@
 """
 ╔════════════════════════════════════════════════════════════════╗
 ║  MSE - Main Scraper Engine                                    ║
-║  Configuration-Driven HTML Scraper - Refactored v2.0          ║
+║  CLI Entry Point                                               ║
 ╚════════════════════════════════════════════════════════════════╝
 """
 import os
@@ -23,7 +23,7 @@ def main():
     """CLI interface voor de scraper."""
     
     print("╔════════════════════════════════════════════════════════════════╗")
-    print("║  Configuration-Driven HTML Scraper v2.0                        ║")
+    print("║  Configuration-Driven HTML Scraper                             ║")
     print("╚════════════════════════════════════════════════════════════════╝")
     print()
     
@@ -32,22 +32,15 @@ def main():
         html_file = sys.argv[1]
     else:
         html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Siemens_5SY6Automaat.txt"
+    
     print(f"📄 Input: {html_file}")
     
     if not os.path.exists(html_file):
         print(f"❌ Bestand niet gevonden: {html_file}")
         sys.exit(1)
     
-    print("🔄 Loading HTML...")
-    
     # Scrape
-    try:
-        result = scrape_file(html_file)
-    except Exception as e:
-        print(f"❌ ERROR during scraping: {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+    result = scrape_file(html_file)
     
     # Output
     print(f"\n✅ Scraping voltooid!")

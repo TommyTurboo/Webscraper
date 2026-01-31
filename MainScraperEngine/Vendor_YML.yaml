@@ -37,11 +37,13 @@ siemens:
       key_column: 1  # Tweede kolom (0-indexed) = attribute-name
       value_column: 2  # Derde kolom = waarde
       skip_rows_with_class: "hc"  # Skip header rows (class="hc")
-      
-    # 2. Extractie uit Commercial Data (mogelijk ook table)
-    - type: "table"
+        # 2. Extractie uit Commercial Data (list-based structure)
+    - type: "rows"
       container: "sie-ps-commercial-data"
-      tables: "table"
+      rows: "li"
+      key: ".commercial-data-section__subtitle"
+      value: "p:not(.commercial-data-section__subtitle)"
+      multiple_values: false
       
     # 3. FALLBACK: Li-items (voor andere Siemens pagina's)
     - type: "li_split"
