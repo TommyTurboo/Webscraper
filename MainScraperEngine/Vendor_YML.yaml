@@ -53,6 +53,31 @@ siemens:
         - "commercial data"
         - "technical data"
         - "productdetails"
+    
+    # ✨ NIEUWE: Description uit META tag
+    - type: "meta_description"
+      description: "Product description from meta tag"
+      selector: "meta[name='description']"
+      attribute: "content"
+      target_section: "Product Info"
+      target_key: "Description"
+    
+    # ✨ NIEUW: Product Image
+    - type: "attribute"
+      description: "Product image URL"
+      selector: ".ps__img[src], img[alt*='3RA']"
+      attribute: "src"
+      target_section: "Product Info"
+      target_key: "Image URL"
+    
+    # ✨ NIEUWE: Datasheet link via data-ste attribuut
+    - type: "datasheet_link"
+      selectors:
+        - "a[data-ste*='Datasheet']"
+        - "a[href*='teddatasheet']"
+      attribute: "href"
+      target_section: "Downloads"
+      target_key: "Datasheet"
 
 vega:
   name: "VEGA"

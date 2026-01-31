@@ -15,6 +15,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup, Tag
 from collections import defaultdict
 from typing import Optional, Dict, List, Any
+from datetime import datetime
 
 # ═══════════════════════════════════════════════════════════════
 # CONFIGURATIE LADEN
@@ -575,7 +576,186 @@ class Extractors:
         text = re.sub(r'<[^>]+>', '', text)
         return text.strip()
 
+    @staticmethod
+    def extract_meta_description(soup: BeautifulSoup, spec: Dict, kv: Dict) -> int:
+        """
+        Extract description uit HTML meta tag.
+        Gebruik: <meta name="description" content="...">
+        """
+        count = 0
+        
+        selector = spec.get("selector", "meta[name='description']")
+        attribute = spec.get("attribute", "content")
+        target_section = spec.get("target_section", "General")
+        target_key = spec.get("target_key", "Description")
+        
+        elem = soup.select_one(selector)
+        if elem and elem.has_attr(attribute):
+            value = elem[attribute]
+            if value:
+                kv[target_section][target_key] = clean_text(value)
+                count = 1
+                print(f"   ✓ Found meta description: {value[:50]}...")
+        
+        if count == 0:
+            print(f"   ✗ No meta description found with selector: {selector}")
+        
+        return count
 
+    @staticmethod
+    def extract_attribute(soup: BeautifulSoup, spec: Dict, kv: Dict) -> int:
+        """
+        Extract attribuut van HTML element (bijv. image src).
+        Ondersteunt meerdere selectors als fallback.
+        """
+        count = 0
+        
+        # Selector(s) ophalen - kan lijst of enkele string zijn
+        selectors = spec.get("selectors", [])
+        if not selectors:
+            single = spec.get("selector")
+            if single:
+                selectors = [single]
+        
+        attribute = spec.get("attribute", "src")
+        target_section = spec.get("target_section", "Product Info")
+        target_key = spec.get("target_key", "Image URL")
+        
+        # ✨ NIEUW: Optie om eerste, laatste of alle matches te nemen
+        take = spec.get("take", "first")  # Options: "first", "last", "all"
+        
+        # Probeer elke selector
+        for selector in selectors:
+            print(f"   🔎 Trying selector: {selector}")
+            
+            try:
+                elems = soup.select(selector)
+                
+                if not elems:
+                    print(f"   → No elements found")
+                    continue
+                
+                print(f"   → Found {len(elems)} element(s)")
+                
+                # Filter elementen die het attribuut hebben
+                valid_elems = [e for e in elems if e.has_attr(attribute)]
+                
+                if not valid_elems:
+                    print(f"   → None have attribute '{attribute}'")
+                    continue
+                
+                print(f"   → {len(valid_elems)} have attribute '{attribute}'")
+                
+                # Kies welke element(en) te nemen
+                if take == "first":
+                    value = valid_elems[0][attribute]
+                    kv[target_section][target_key] = value
+                    count = 1
+                    print(f"   ✓ Found (first): {value}")
+                    break
+                
+                elif take == "last":
+                    value = valid_elems[-1][attribute]
+                    kv[target_section][target_key] = value
+                    count = 1
+                    print(f"   ✓ Found (last): {value}")
+                    break
+                
+                elif take == "all":
+                    values = [e[attribute] for e in valid_elems]
+                    kv[target_section][target_key] = values
+                    count = len(values)
+                    print(f"   ✓ Found {count} values")
+                    break
+            
+            except Exception as e:
+                print(f"   ⚠️  Selector failed: {selector} → {e}")
+                continue
+        
+        # ✨ NIEUW: Fallback naar JSON-LD (structured data)
+        if count == 0 and target_key == "Image URL":
+            print("   🔎 Fallback: trying JSON-LD structured data...")
+            script = soup.find("script", {"type": "application/ld+json", "id": "ld-script-product"})
+            
+            if script and script.string:
+                try:
+                    import json
+                    data = json.loads(script.string)
+                    
+                    if "image" in data:
+                        image_url = data["image"]
+                        kv[target_section][target_key] = image_url
+                        count = 1
+                        print(f"   ✓ Found in JSON-LD: {image_url}")
+                except Exception as e:
+                    print(f"   ⚠️  JSON-LD parsing failed: {e}")
+        
+        if count == 0:
+            print(f"   ✗ No {attribute} found")
+        
+        return count
+    
+    @staticmethod
+    def extract_datasheet_link(soup: BeautifulSoup, spec: Dict, kv: Dict) -> int:
+        """
+        Vind datasheet link op basis van:
+        1. data-ste attribuut met "Datasheet"
+        2. href met "teddatasheet"
+        3. Tekst bevat "productfiche" of "datasheet"
+        """
+        count = 0
+        
+        selectors = spec.get("selectors", [])
+        if not selectors:
+            selectors = [spec.get("selector", "a")]  # Fallback naar enkelvoud
+        
+        attribute = spec.get("attribute", "href")
+        target_section = spec.get("target_section", "Downloads")
+        target_key = spec.get("target_key", "Datasheet")
+        
+        # ✅ FIX: Gebruik soup.select() ZONDER :contains
+        for selector in selectors:
+            print(f"   🔎 Trying selector: {selector}")
+            
+            try:
+                links = soup.select(selector)
+                print(f"   → Found {len(links)} links")
+                
+                for link in links:
+                    if link.has_attr(attribute):
+                        url = link[attribute]
+                        
+                        # Valideer dat het een datasheet link is
+                        if any(keyword in url.lower() for keyword in ['datasheet', 'teddatasheet']):
+                            kv[target_section][target_key] = url
+                            count = 1
+                            print(f"   ✓ Found datasheet link: {url}")
+                            break
+                
+                if count > 0:
+                    break
+            except Exception as e:
+                print(f"   ⚠️  Selector failed: {selector} → {e}")
+                continue
+        
+        # ✅ Fallback: BeautifulSoup's find() met lambda (werkt WEL)
+        if count == 0:
+            print("   🔎 Fallback: searching by text...")
+            links = soup.find_all('a', string=lambda text: text and ('productfiche' in text.lower() or 'datasheet' in text.lower()))
+            print(f"   → Found {len(links)} links by text")
+            
+            for link in links:
+                if link.has_attr('href'):
+                    url = link['href']
+                    kv[target_section][target_key] = url
+                    count = 1
+                    print(f"   ✓ Found datasheet via text search: {url}")
+                    break
+        
+        if count == 0:
+            print(f"   ✗ No datasheet link found")
+        
+        return count
 # ═══════════════════════════════════════════════════════════════
 # MAIN SCRAPER CLASS
 # ═══════════════════════════════════════════════════════════════
@@ -596,7 +776,11 @@ class ConfigDrivenScraper:
         "dl": Extractors.extract_dl,
         "label_value": Extractors.extract_label_value,
         "product_variants": Extractors.extract_product_variants,
-        "schneider_json": Extractors.extract_schneider_json,  # ← NIEUWE
+        "schneider_json": Extractors.extract_schneider_json,  
+
+        "meta_description": Extractors.extract_meta_description,
+        "attribute": Extractors.extract_attribute,
+        "datasheet_link": Extractors.extract_datasheet_link,
     }
     
     def __init__(self, html: str):
@@ -605,6 +789,7 @@ class ConfigDrivenScraper:
         self.configs = load_configs()
         self.vendor = None
         self.stats = defaultdict(int)
+        self.extraction_timestamp = datetime.now()
     
     def scrape(self) -> Dict[str, Any]:
         """Main scraping method."""
@@ -632,8 +817,36 @@ class ConfigDrivenScraper:
         
         # 4. Cleanup en flatten
         result = self._cleanup(kv, vendor_config)
+
+        # ✨ 5. NIEUW: Voeg metadata toe
+        result["metadata"] = self._build_metadata()
         
         return result
+    
+    def _extract_canonical_url(self) -> Optional[str]:
+        """Extract canonical URL uit HTML."""
+        link = self.soup.find("link", rel="canonical")
+        if link and link.has_attr("href"):
+            return link["href"]
+        return None
+
+    def _build_metadata(self) -> Dict[str, str]:
+        """
+        Bouw metadata sectie met alleen:
+        - Canonical URL
+        - Extraction timestamp (dd/mm/yyyy HH:MM:SS)
+        """
+        metadata = {}
+        
+        # 1. Canonical URL
+        canonical_url = self._extract_canonical_url()
+        if canonical_url:
+            metadata["canonical_url"] = canonical_url
+        
+        # 2. Extraction timestamp (Europees formaat)
+        metadata["extraction_timestamp"] = self.extraction_timestamp.strftime("%d/%m/%Y %H:%M:%S")
+        
+        return metadata
     
     def _cleanup(self, kv: Dict, config: Dict) -> Dict:
         """Post-processing: cleanup en normalize."""
@@ -686,7 +899,9 @@ def scrape_file(filepath: str) -> Dict[str, Any]:
     """Convenience function om een HTML bestand te scrapen."""
     with open(filepath, "r", encoding="utf-8") as f:
         html = f.read()
-    return scrape_html(html)
+
+    scraper = ConfigDrivenScraper(html)
+    return scraper.scrape()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -720,6 +935,12 @@ if __name__ == "__main__":
     print(f"   - Vendor: {result['vendor']}")
     print(f"   - Secties: {len(result['kv'])}")
     print(f"   - Stats: {result['stats']}")
+
+    # ✨ NIEUW: Metadata info
+    metadata = result.get("metadata", {})
+    if "canonical_url" in metadata:
+        print(f"   - URL: {metadata['canonical_url']}")
+    print(f"   - Extractie: {metadata.get('extraction_timestamp', 'Unknown')}")
     
     # Save to JSON
     output_file = "config_scraped_output.json"
