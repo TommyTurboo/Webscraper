@@ -11,6 +11,11 @@ def detect_vendor(soup: BeautifulSoup, configs: Dict) -> Optional[str]:
     """
     Detecteer welke vendor bij deze HTML hoort.
     
+    Detection priority:
+    1. Canonical URL (most reliable!)
+    2. Configured detection rules
+    3. Generic fallback
+    
     Args:
         soup: BeautifulSoup object van de HTML
         configs: Dictionary met alle vendor configuraties
@@ -19,10 +24,37 @@ def detect_vendor(soup: BeautifulSoup, configs: Dict) -> Optional[str]:
         str: Vendor key (bijv. "siemens", "phoenix") of "generic"
     """
     
-    for vendor_key, config in configs.items():
-        if vendor_key == "generic":
-            continue  # Skip generic, is fallback
+    # 🎯 PRIORITY 1: Check canonical URL first (most reliable!)
+    canonical_link = soup.find("link", rel="canonical")
+    if canonical_link and canonical_link.has_attr("href"):
+        canonical_url = canonical_link["href"].lower()
         
+        # Domain mapping voor vendors
+        url_vendor_map = {
+            "new.abb.com": "abb",
+            "abb.com": "abb",
+            "phoenixcontact.com": "phoenix",
+            "new.schneider-electric.com": "schneider",
+            "se.com": "schneider",
+            "siemens.com": "siemens",
+            "mall.industry.siemens.com": "siemens",
+            "sieportal.siemens.com": "siemens",
+            "vega.com": "vega",
+            "nexans.": "nexans",  # nexans.nl, nexans.com, etc.
+        }
+        
+        for domain, vendor in url_vendor_map.items():
+            if domain in canonical_url:
+                return vendor
+    
+    # PRIORITY 2: Fallback to configured detection rules
+    # Sort by priority (lower number = higher priority)
+    sorted_vendors = sorted(
+        [(k, v) for k, v in configs.items() if k != "generic"],
+        key=lambda x: x[1].get("priority", 999)
+    )
+    
+    for vendor_key, config in sorted_vendors:
         detect_rules = config.get("detect", [])
         
         for rule in detect_rules:

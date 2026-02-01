@@ -26,12 +26,11 @@ def main():
     print("║  Configuration-Driven HTML Scraper v2.0                        ║")
     print("╚════════════════════════════════════════════════════════════════╝")
     print()
-    
-    # Default test file of CLI argument
+      # Default test file of CLI argument
     if len(sys.argv) > 1:
         html_file = sys.argv[1]
     else:
-        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Siemens_5SY6Automaat.txt"
+        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Nexans_Draad16.txt"
     print(f"📄 Input: {html_file}")
     
     if not os.path.exists(html_file):
@@ -58,11 +57,13 @@ def main():
     # Metadata info
     metadata = result.get("metadata", {})
     if "canonical_url" in metadata:
-        print(f"   - URL: {metadata['canonical_url']}")
-    print(f"   - Extractie: {metadata.get('extraction_timestamp', 'Unknown')}")
+        print(f"   - URL: {metadata['canonical_url']}")    
+        print(f"   - Extractie: {metadata.get('extraction_timestamp', 'Unknown')}")
     
-    # Save to JSON
-    output_file = "config_scraped_output.json"
+    # Save to JSON in MainScraperEngine directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_file = os.path.join(script_dir, "config_scraped_output.json")
+    
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
     

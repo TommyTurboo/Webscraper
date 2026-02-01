@@ -1,0 +1,58 @@
+{
+  "vendor": "Nexans",
+  "kv": {
+    "Construction characteristics": {
+      "Conductor material": "Copper",
+      "Conductor flexibility": "Stranded class 2",
+      "Conductor shape": "Circular stranded (RM)",
+      "Insulation": "XLPE (chemical)",
+      "Core identification": "Black",
+      "With Green/Yellow core": "No",
+      "Material of filler / inner sheath": "Compound or tape",
+      "Outer sheath": "PVC",
+      "Sheath colour": "Grey",
+      "Halogen free": "No",
+      "With smaller neutral conductor": "No"
+    },
+    "Dimensional characteristics": {
+      "Number of cores": "1",
+      "Conductor cross-section": "16 mm²",
+      "Ground conductor cross-section": "- mm²",
+      "Neutral conductor section (when smaller)": "- mm²",
+      "Average insulation thickness": "0.7 mm",
+      "Insulation thickness of smaller conductor": "- mm",
+      "Minimum outer sheath thickness": "1.09 mm",
+      "Nominal outer diameter": "9.2 mm",
+      "Approximate weight": "195 kg/km"
+    },
+    "Electrical characteristics": {
+      "Test voltage": "4 kV",
+      "Perm. current rating in air 30°C - flat formation": "128 A",
+      "Permissible current rating in open air": "102 A",
+      "Rated Voltage Uo/U (Um)": "0,6/1 kV"
+    },
+    "Mechanical characteristics": {
+      "Impact resistance Max (IEC 30364-5-51)": "6 J"
+    },
+    "Usage characteristics": {
+      "Bending factor when laying": "15 (xD)",
+      "Field of application": "Indoor, Outdoor",
+      "Max. conductor temperature in service": "90 °C",
+      "Operating temperature, range": "-20 ... 80 °C",
+      "Minimum installation temperature": "0 °C",
+      "Resistance to vibrations": "Moderate",
+      "Water proof": "Good",
+      "Length": "- m",
+      "Packaging": "Cut to length",
+      "Metric marking": "Continuous",
+      "Range": "N"
+    }
+  },
+  "stats": {
+    "rows": 36
+  },
+  "metadata": {
+    "canonical_url": "https://www.nexans.be/en/products/Energy-up-to-1kV/PVC/PVC-unarmoured-cables/XVB-Cca-0,30373/product~10551722~.html",
+    "extraction_timestamp": "01/02/2026 12:53:07"
+  }
+}

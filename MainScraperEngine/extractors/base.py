@@ -12,6 +12,9 @@ from bs4 import BeautifulSoup
 class BaseExtractor(ABC):
     """Abstract base class voor alle extractors."""
     
+    def __init__(self):
+        self.vendor = None  # Will be set by scraper
+    
     @abstractmethod
     def extract(self, soup: BeautifulSoup, spec: Dict[str, Any], kv: Dict) -> int:
         """

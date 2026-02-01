@@ -17,12 +17,17 @@ from extractors.generic import (
     DatasheetLinkExtractor,
     ImageExtractor,
     MetaDescriptionExtractor,
+    TextExtractor,
+    AttributeExtractor,
 )
 
 # Vendor-specific extractors (complex cases)
 from extractors.vendors import (
+    ABBJSONExtractor,
     SchneiderJSONExtractor,
     NexansVariantsExtractor,
+    PhoenixPdfExtractor,
+    VegaPdfExtractor,
 )
 
 # Extractor registry - maps YAML type to extractor class
@@ -36,12 +41,14 @@ EXTRACTOR_REGISTRY = {
     
     # Specialized generic types
     "datasheet_link": DatasheetLinkExtractor,
-    "attribute": ImageExtractor,  # Legacy naam
-    "meta_description": MetaDescriptionExtractor,
-    
-    # Vendor-specific types
+    "attribute": AttributeExtractor,  # ✨ Fixed: was ImageExtractor
+    "text": TextExtractor,  # ✨ NEW
+    "meta_description": MetaDescriptionExtractor,    # Vendor-specific types
+    "abb_json": ABBJSONExtractor,
     "schneider_json": SchneiderJSONExtractor,
     "product_variants": NexansVariantsExtractor,
+    "phoenix_pdf": PhoenixPdfExtractor,
+    "vega_pdf": VegaPdfExtractor,
 }
 
 __all__ = [
@@ -56,7 +63,11 @@ __all__ = [
     "DatasheetLinkExtractor",
     "ImageExtractor",
     "MetaDescriptionExtractor",
-    # Vendor-specific
+    "TextExtractor",
+    "AttributeExtractor",    # Vendor-specific
+    "ABBJSONExtractor",
     "SchneiderJSONExtractor",
     "NexansVariantsExtractor",
+    "PhoenixPdfExtractor",
+    "VegaPdfExtractor",
 ]

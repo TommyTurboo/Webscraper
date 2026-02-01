@@ -88,8 +88,21 @@ vega:
   detect:
     - class_contains: "characteristic-title"  # ← Specifieker maken
     - class_contains: "technical-data-content"
-  
+    - text_contains: "VEGA Grieshaber" 
   specs:
+    # ✨ FIX: Text extractor ipv meta_description
+    - type: "text"
+      selector: "div.product-application-text"
+      target_section: "Product Info"
+      target_key: "Description"
+      # ✨ NIEUW: Product image (met post-processing)
+    - type: "attribute"
+      selector: "div.cbp-item img[alt*='VEGA']"
+      attribute: "src"
+      target_section: "Product Info"
+      target_key: "Image URL"
+      post_process: "prepend_base_url"
+
     - type: "rows"
       rows: "div.characteristic"
       key: ".characteristic-title"
@@ -99,6 +112,14 @@ vega:
         - ".unit-choices"
         - ".unit-choice"
         - ".unit-choice-spacer"
+    
+    # ✨ NIEUW: PDF Downloads Extractor
+    - type: "vega_pdf"
+      description: "Extract PDF download URLs from document cards"
+      target_section: "Downloads"
+      base_url: "https://www.vega.com"
+      cards_selector: "div.cards"
+      card_selector: "div.card"
 
 nexans:
   name: "Nexans"
@@ -138,12 +159,73 @@ phoenix:
     - class_contains: "productdetails"
   
   specs:
+    # ✨ NIEUW: Product description uit META tag
+    - type: "meta_description"
+      description: "Product description from meta tag"
+      selector: "meta[name='description']"
+      attribute: "content"
+      target_section: "Product Info"
+      target_key: "Description"
+    
+    # ✨ NIEUW: Product image URL uit Open Graph meta tag
+    - type: "attribute"
+      description: "Product image URL from Open Graph meta tag"
+      selector: "meta[property='og:image']"
+      attribute: "content"
+      target_section: "Product Info"
+      target_key: "Image URL"
+    
+    # Bestaande extractors
     - type: "table"
       container: ".productdetails"
       tables: "table"
     
     - type: "dl"
       container: ".specifications"
+    
+    # ✨ NIEUW: PDF Datasheet URL Generator
+    - type: "phoenix_pdf"
+      description: "Generate PDF datasheet download URL"
+      article_key: "Artikelnummer"
+      article_section: "Productdetails"
+      target_section: "Downloads"
+      target_key: "PDF Datasheet"
+      realm: "be"
+      locale: "nl-BE"
+
+abb:
+  name: "ABB"
+  priority: 15
+  
+  detect:
+    # Detectie niet meer nodig - canonical URL check werkt beter!
+    # Zie detector.py voor domain-based detection
+  
+  specs:
+    # ABB gebruikt JSON-data embedded in JavaScript: var model = {...}
+    - type: "abb_json"
+      description: "Extract product data from var model JavaScript object"
+      
+      # De extractor zoekt automatisch naar:
+      # 1. var model = {...}; (ProductViewModel met attributeGroups)
+      # 2. <script type="application/ld+json"> (Schema.org data)
+      
+      extract:
+        # Basis product info (uit LD+JSON of ProductViewModel)
+        product_id:
+          path: "sku"
+        
+        product_name:
+          path: "name"
+        
+        image:
+          path: "image"
+          target_key: "Image URL"
+        
+        # Specificaties worden automatisch geëxtraheerd uit:
+        # ProductViewModel.Product.attributeGroups.items[]
+        # Geen configuratie nodig - de extractor vindt het zelf!
+        specifications: {}
 
 schneider:
   name: "Schneider Electric"
@@ -179,6 +261,14 @@ schneider:
         metadata:
           dataSheetTitle: "dataSheetTitle"
           breadcrumbs: "breadcrumbs"
+        image:
+          enabled: true
+          search_patterns:
+            - 'download\.schneider-electric\.com/files\?p_Doc_Ref=[^"&]+(?:&amp;|&)p_File_Type=rendition_(?:369|520|1500)_jpg'
+            - 'meta\[property="og:image"\]'
+          preferred_resolution: "rendition_369_jpg"
+          target_section: "Product Info"
+          target_key: "Image URL"
 
 # ═══════════════════════════════════════════════════════════════
 # GENERIEKE FALLBACK - Wordt gebruikt als geen vendor matcht

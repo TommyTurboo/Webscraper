@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 from typing import Dict, Any, Optional
 from datetime import datetime
+import html
 
 from core.config import load_configs
 from core.detector import detect_vendor
@@ -23,13 +24,44 @@ class ConfigDrivenScraper:
     """
     
     def __init__(self, html: str):
-        self.html = html
-        self.soup = BeautifulSoup(html, "html.parser")
+        # First, try to unescape the HTML if it's escaped
+        self.html = self._unescape_if_needed(html)
+        self.soup = BeautifulSoup(self.html, "html.parser")
         self.configs = load_configs()
         self.vendor = None
         self.stats = defaultdict(int)
         self.extraction_timestamp = datetime.now()
     
+    def _unescape_if_needed(self, html_content: str) -> str:
+        """
+        Check if HTML is escaped and unescape it if needed.
+        ABB HTML files are often saved with hex-encoded characters (\\x3C instead of <).
+        """
+        # Check for hex-encoded HTML (\\x3C instead of <)
+        if '\\x3C' in html_content[:1000] or '\\x3E' in html_content[:1000]:
+            print("🔧 Detected hex-encoded HTML - decoding...")
+            # Decode hex escapes
+            decoded = html_content.encode('utf-8').decode('unicode-escape')
+            script_count_before = html_content.count('<script')
+            script_count_after = decoded.count('<script')
+            print(f"   <script tags: {script_count_before} → {script_count_after}")
+            return decoded
+        
+        # Check if the HTML is escaped by looking for common escaped tags
+        elif '&lt;' in html_content[:1000]:
+            print("🔧 Detected HTML entity-escaped HTML - unescaping...")
+            unescaped = html.unescape(html_content)
+            script_count_before = html_content.count('<script')
+            script_count_after = unescaped.count('<script')
+            print(f"   <script tags: {script_count_before} → {script_count_after}")
+            return unescaped
+        
+        else:
+            # Still check for script tags even if not obviously escaped
+            script_count = html_content.count('<script')
+            print(f"ℹ️  HTML appears unescaped ({script_count} <script tags found)")
+            return html_content
+
     def scrape(self) -> Dict[str, Any]:
         """Main scraping method."""
         
@@ -41,8 +73,7 @@ class ConfigDrivenScraper:
         
         # 2. Initialiseer result
         kv = defaultdict(dict)
-        
-        # 3. Run alle spec extractors voor deze vendor
+          # 3. Run alle spec extractors voor deze vendor
         specs = vendor_config.get("specs", [])
         for spec in specs:
             spec_type = spec.get("type")
@@ -51,6 +82,8 @@ class ConfigDrivenScraper:
             if extractor_class:
                 try:
                     extractor = extractor_class()
+                    # ✨ Pass vendor name to extractor
+                    extractor.vendor = vendor_config.get('name', self.vendor)
                     count = extractor.extract(self.soup, spec, kv)
                     
                     if count > 0:

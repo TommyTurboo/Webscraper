@@ -21,7 +21,6 @@ class SchneiderJSONExtractor(BaseExtractor):
     @property
     def extractor_type(self) -> str:
         return "schneider_json"
-    
     def extract(self, soup: BeautifulSoup, spec: Dict[str, Any], kv: Dict) -> int:
         """Extract data uit Schneider's JSON structure."""
         count = 0
@@ -63,6 +62,10 @@ class SchneiderJSONExtractor(BaseExtractor):
         # 3e. Extract Metadata
         if "metadata" in extract_config:
             count += self._extract_metadata(data, extract_config["metadata"], kv)
+        
+        # 3f. Extract Image URL (grote versie uit background-image)
+        if "image" in extract_config:
+            count += self._extract_image_url(soup, extract_config["image"], kv)
         
         return count
     
@@ -166,7 +169,6 @@ class SchneiderJSONExtractor(BaseExtractor):
                         count += 1
         
         return count
-    
     def _extract_description(self, data: Dict, config: Dict, kv: Dict) -> int:
         """Extract long description."""
         desc_data = self._get_by_path(data, config.get("path", ""))
@@ -195,6 +197,80 @@ class SchneiderJSONExtractor(BaseExtractor):
                 count += 1
         
         return count
+    def _extract_image_url(self, soup: BeautifulSoup, config: Dict, kv: Dict) -> int:
+        """Extract product image URL (grote versie 1500px)."""
+        if not config.get("enabled", True):
+            return 0
+            
+        image_url = None
+        preferred_resolution = config.get("preferred_resolution", "rendition_369_jpg")
+          # ✨ NIEUWE Strategie 0: Zoek rechtstreeks in HTML naar download.schneider-electric.com URLs
+        search_patterns = config.get("search_patterns", [])
+        if search_patterns and isinstance(search_patterns, list):
+            html_text = str(soup)
+            for pattern in search_patterns:
+                # Check of het een regex pattern is (gebruik raw string voor comparison)
+                if pattern.startswith(r'download\.schneider-electric\.com'):
+                    # Zoek in de HTML source naar image URLs
+                    matches = re.findall(pattern, html_text)
+                    if matches:
+                        # Pak de eerste match en clean het
+                        image_url = matches[0]
+                        # Fix HTML entities
+                        image_url = image_url.replace('&amp;', '&')
+                        # Zorg dat het een volledige URL is
+                        if not image_url.startswith('http'):
+                            image_url = 'https://' + image_url
+                        break
+        
+        # Strategie 1: Desktop versie - div.zoom__viewer background-image
+        if not image_url:
+            viewer = soup.select_one("div.zoom__viewer")
+            if viewer and viewer.has_attr("style"):
+                style = viewer["style"]
+                match = re.search(r'url\(["\']?([^"\')]+)["\']?\)', style)
+                if match:
+                    image_url = match.group(1)
+        
+        # Strategie 2: Desktop versie - img.zoom__img
+        if not image_url:
+            img = soup.select_one("img.zoom__img")
+            if img and img.has_attr("src"):
+                image_url = img["src"]
+        
+        # Strategie 3: Mobiele versie - div.mobile-media__slide img
+        if not image_url:
+            mobile_img = soup.select_one("div.mobile-media__slide img")
+            if mobile_img and mobile_img.has_attr("src"):
+                image_url = mobile_img["src"]
+        
+        # Strategie 4: Mobiele versie - div.mobile-media__slide-360 background-image
+        if not image_url:
+            mobile_360 = soup.select_one("div.mobile-media__slide-360")
+            if mobile_360 and mobile_360.has_attr("style"):
+                style = mobile_360["style"]
+                match = re.search(r'url\(["\']?([^"\')]+)["\']?\)', style)
+                if match:
+                    image_url = match.group(1)
+        
+        # Als we een image URL hebben gevonden, upgrade naar gewenste versie
+        if image_url:
+            # Upgrade naar gewenste versie (369px, 520px of 1500px)
+            if "rendition_" in image_url:
+                # Vervang bestaande rendition met gewenste versie
+                image_url = re.sub(r'rendition_\d+_(jpg|png|gif)', preferred_resolution, image_url)
+            
+            # Verwijder default_image parameter als het een echte afbeelding is
+            if "default_image=DefaultProductImage.png" in image_url and "p_Doc_Ref=" in image_url:
+                image_url = image_url.split("&default_image=")[0]
+            
+            # Store in configured section/key or default
+            target_section = config.get("target_section", "Product Info")
+            target_key = config.get("target_key", "Image URL")
+            kv[target_section][target_key] = image_url
+            return 1
+        
+        return 0
     
     def _clean_html(self, text: str) -> str:
         """Verwijder HTML tags uit tekst."""
