@@ -15,6 +15,17 @@ env/
 output/
 *.html
 
+# ⚠️ BELANGRIJK: Scraper test bestanden (kunnen tokens bevatten!)
+src/scrapers/*.txt
+MainScraperEngine/*.json
+!MainScraperEngine/config_scraped_output.json
+
+# Large JSON dumps (exclusief package files)
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+
 # IDE
 .vscode/
 .idea/
@@ -28,3 +39,8 @@ Thumbs.db
 # Playwright
 playwright-report/
 test-results/
+
+# Secrets
+secrets.ini
+.env
+.env.local
