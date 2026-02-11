@@ -27,17 +27,22 @@ siemens:
     - selector: "sie-ps-commercial-data"
     - selector: "sie-ps-technical-data"
     - id: "specifications"
+    # Detectie voor variantenlijst pagina's
+    - selector: "sie-pl-product-catalog-list-item"
   
   specs:
     # 1. Extractie uit Technical Data table
     - type: "table"
-      container: "sie-ps-technical-data"
-      tables: "table.TEPreviewTable"
+      # Container verwijderd: we zoeken in het hele document omdat de HTML samengevoegd is
+      # container: "sie-ps-technical-data" 
+      tables: "table.TEPreviewTable, sie-ps-technical-data table"
       extract_mode: "key_value"  # Elke rij = key-value pair
-      key_column: 1  # Tweede kolom (0-indexed) = attribute-name
-      value_column: 2  # Derde kolom = waarde
+      # FIX: De HTML gebruikt colspan="2" voor de eerste cel. Fysiek zijn er dus maar 2 <td> elementen.
+      key_column: 0    # Eerste element (bevat de naam)
+      value_column: 1  # Tweede element (bevat de waarde)
       skip_rows_with_class: "hc"  # Skip header rows (class="hc")
-        # 2. Extractie uit Commercial Data (list-based structure)
+      
+    # 2. Extractie uit Commercial Data (list-based structure)
     - type: "rows"
       container: "sie-ps-commercial-data"
       rows: "li"
@@ -56,6 +61,28 @@ siemens:
         - "technical data"
         - "productdetails"
     
+    # 4. Product Varianten Lijst
+    - type: "product_variants"
+      # AANGEPAST: Specifieker zoeken in #productVariants container om 'Related Products' te negeren.
+      # We pakken direct de .catalog-list-item kaartjes.
+      variant_selector: "#productVariants .catalog-list-item"
+      base_url: "https://sieportal.siemens.com" # Voeg base_url toe voor relatieve links
+      fields:
+        # Artikelnummer (uit titel link)
+        title: ".catalog-list-item__identifier a"
+        # URL naar detailpagina (scraper gebruikt automatisch base_url indien aanwezig)
+        url: ".catalog-list-item__identifier a"
+        # Omschrijving: Selector versimpeld om zeker te zijn dat tekst gepakt wordt
+        description: ".catalog-list-item__description"
+        # Afbeelding: Specifieker op img tag
+        image: "img.catalog-list-item__image-wrapper__image"
+        # Price extraction configuration (Siemens)
+        # Based on user-provided HTML structure:
+        # First span is List Price (often ends with /)
+        list_price: ".product-price__price__span:nth-of-type(1)"
+        # Second span is Your Price
+        your_price: ".product-price__price__span:nth-of-type(2)"
+
     # ✨ NIEUWE: Description uit META tag
     - type: "meta_description"
       description: "Product description from meta tag"
@@ -134,6 +161,7 @@ nexans:
     - type: "product_variants"
       container: "body"
       variant_selector: ".product__list__item"
+      base_url: "https://www.nexans.be"  # Voeg base_url toe voor Nexans
       fields:
         title: ".product__list__item__title"
         ref: ".product__list__item__ref"
@@ -149,6 +177,15 @@ nexans:
       key: ".list-characteristics__title"
       value: ".list-characteristics__desc"
       multiple_values: false
+
+    # 3. ✨ NIEUW: Datasheet link download
+    - type: "datasheet_link"
+      target_section: "Downloads"
+      target_key: "Datasheet"
+      base_url: "https://www.nexans.be"
+      selectors:
+        - "a.product__downloads__file__link[data-ga-type='datasheet']"
+        - "a[href*='/product/pdf/']"
 
 phoenix:
   name: "Phoenix Contact"

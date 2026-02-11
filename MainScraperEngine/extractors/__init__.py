@@ -19,13 +19,13 @@ from extractors.generic import (
     MetaDescriptionExtractor,
     TextExtractor,
     AttributeExtractor,
+    ProductVariantsExtractor, # NEW Generic Import
 )
 
 # Vendor-specific extractors (complex cases)
 from extractors.vendors import (
     ABBJSONExtractor,
     SchneiderJSONExtractor,
-    NexansVariantsExtractor,
     PhoenixPdfExtractor,
     VegaPdfExtractor,
 )
@@ -38,15 +38,17 @@ EXTRACTOR_REGISTRY = {
     "rows": RowsExtractor,
     "li_split": LiSplitExtractor,
     "label_value": LabelValueExtractor,
+    "product_variants": ProductVariantsExtractor, # Changed to Generic
     
     # Specialized generic types
     "datasheet_link": DatasheetLinkExtractor,
-    "attribute": AttributeExtractor,  # ✨ Fixed: was ImageExtractor
-    "text": TextExtractor,  # ✨ NEW
-    "meta_description": MetaDescriptionExtractor,    # Vendor-specific types
+    "attribute": AttributeExtractor,
+    "text": TextExtractor,
+    "meta_description": MetaDescriptionExtractor,
+    
+    # Vendor-specific types
     "abb_json": ABBJSONExtractor,
     "schneider_json": SchneiderJSONExtractor,
-    "product_variants": NexansVariantsExtractor,
     "phoenix_pdf": PhoenixPdfExtractor,
     "vega_pdf": VegaPdfExtractor,
 }
@@ -64,10 +66,11 @@ __all__ = [
     "ImageExtractor",
     "MetaDescriptionExtractor",
     "TextExtractor",
-    "AttributeExtractor",    # Vendor-specific
+    "AttributeExtractor",
+    "ProductVariantsExtractor",
+    # Vendor-specific
     "ABBJSONExtractor",
     "SchneiderJSONExtractor",
-    "NexansVariantsExtractor",
     "PhoenixPdfExtractor",
     "VegaPdfExtractor",
 ]

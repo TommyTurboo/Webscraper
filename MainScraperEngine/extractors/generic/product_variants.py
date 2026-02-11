@@ -1,18 +1,19 @@
 """
 ╔════════════════════════════════════════════════════════════════╗
-║  Nexans Variants Extractor - Product variant lists            ║
+║  Product Variants Extractor - Generic list extractor          ║
 ╚════════════════════════════════════════════════════════════════╝
 """
 from typing import Dict, Any
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from extractors.base import BaseExtractor
 from core.utils import clean_text
 
 
-class NexansVariantsExtractor(BaseExtractor):
+class ProductVariantsExtractor(BaseExtractor):
     """
-    Extract product variants uit Nexans productlijst.
-    Nexans heeft een unieke structuur met variant items.
+    Extract product variants from a list of items using selectors.
+    Generic extractor for product lists, configured via YAML.
     """
     
     @property
@@ -25,17 +26,19 @@ class NexansVariantsExtractor(BaseExtractor):
         
         container_sel = spec.get("container", "body")
         variant_sel = spec.get("variant_selector", "")
+        base_url = spec.get("base_url", "")
         fields_config = spec.get("fields", {})
+        
         container = soup.select_one(container_sel)
         if not container:
-            container = soup  # Fallback naar hele document
+            container = soup  # Fallback to the entire document
         
         variants = container.select(variant_sel)
         
         if not variants:
             return 0
         
-        # Maak een lijst voor alle variants
+        # Create a list for all variants
         variant_list = []
         
         for variant_elem in variants:
@@ -57,7 +60,10 @@ class NexansVariantsExtractor(BaseExtractor):
             if "url" in fields_config:
                 url_elem = variant_elem.select_one(fields_config["url"])
                 if url_elem and url_elem.has_attr("href"):
-                    variant_info["url"] = url_elem["href"]
+                    url_val = url_elem["href"]
+                    if base_url and not url_val.startswith(("http:", "https:")):
+                         url_val = urljoin(base_url, url_val)
+                    variant_info["url"] = url_val
             
             # Extract Description
             if "description" in fields_config:
@@ -70,6 +76,23 @@ class NexansVariantsExtractor(BaseExtractor):
                 img_elem = variant_elem.select_one(fields_config["image"])
                 if img_elem and img_elem.has_attr("src"):
                     variant_info["image"] = img_elem["src"]
+
+            # Extract List Price
+            if "list_price" in fields_config:
+                price_elem = variant_elem.select_one(fields_config["list_price"])
+                if price_elem:
+                    # Remove potential noise like "/" or "per Piece" from text
+                    text = clean_text(price_elem.get_text(" ", strip=True))
+                    # Remove trailing separator if present (e.g. "9.058,00 EUR /")
+                    if text.endswith("/"):
+                        text = text[:-1].strip()
+                    variant_info["list_price"] = text
+
+            # Extract Your Price
+            if "your_price" in fields_config:
+                price_elem = variant_elem.select_one(fields_config["your_price"])
+                if price_elem:
+                    variant_info["your_price"] = clean_text(price_elem.get_text(" ", strip=True))
 
             # Extract specs (nested)
             if "specs" in fields_config:
@@ -95,7 +118,7 @@ class NexansVariantsExtractor(BaseExtractor):
                 variant_list.append(variant_info)
                 count += 1
         
-        # Sla alle variants op in een speciale sectie
+        # Save all variants in a special section
         if variant_list:
             kv["Product Variants"]["Items"] = variant_list
         

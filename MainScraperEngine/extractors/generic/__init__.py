@@ -10,6 +10,7 @@ from extractors.generic.image import ImageExtractor
 from extractors.generic.meta_description import MetaDescriptionExtractor
 from extractors.generic.text import TextExtractor
 from extractors.generic.attribute import AttributeExtractor
+from extractors.generic.product_variants import ProductVariantsExtractor
 
 __all__ = [
     "TableExtractor",
@@ -22,4 +23,5 @@ __all__ = [
     "MetaDescriptionExtractor",
     "TextExtractor",
     "AttributeExtractor",
+    "ProductVariantsExtractor",
 ]

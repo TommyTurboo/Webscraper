@@ -1,7 +1,7 @@
 class Config:
     # Browser settings
     VIEWPORT = {'width': 1920, 'height': 1080}
-    LOCALE = 'nl-BE'
+    LOCALE = 'en-BE'
     TIMEZONE = 'Europe/Brussels'
     
     # Timeouts (in ms)
@@ -12,3 +12,6 @@ class Config:
     RETRIES = 2
     SCROLL_DELAY = 100  # ms
     SCROLL_STEP = 100   # pixels
+
+    # Secrets
+    SECRETS_PATH = "c:\\Users\\tomva\\PlatformIO\\my-node-project\\secrets\\credentials.ini"

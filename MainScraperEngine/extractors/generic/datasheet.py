@@ -32,6 +32,7 @@ class DatasheetLinkExtractor(BaseExtractor):
         attribute = spec.get("attribute", "href")
         target_section = spec.get("target_section", "Downloads")
         target_key = spec.get("target_key", "Datasheet")
+        base_url = spec.get("base_url", "")
         
         # Strategie 1: Probeer CSS selectors
         for selector in selectors:
@@ -43,6 +44,11 @@ class DatasheetLinkExtractor(BaseExtractor):
                     
                     # Valideer dat het een datasheet lijkt
                     if self._is_datasheet_url(url):
+                        # Prepend base_url if needed
+                        if base_url and not url.startswith(("http:", "https:")):
+                            from urllib.parse import urljoin
+                            url = urljoin(base_url, url)
+
                         kv[target_section][target_key] = url
                         count += 1
                         return count  # Stop na eerste match
@@ -58,6 +64,11 @@ class DatasheetLinkExtractor(BaseExtractor):
                 # Check of tekst datasheet keyword bevat
                 if any(keyword in link_text for keyword in datasheet_keywords):
                     if self._is_datasheet_url(href):
+                        # Prepend base_url if needed
+                        if base_url and not href.startswith(("http:", "https:")):
+                            from urllib.parse import urljoin
+                            href = urljoin(base_url, href)
+
                         kv[target_section][target_key] = href
                         count += 1
                         return count
@@ -74,5 +85,6 @@ class DatasheetLinkExtractor(BaseExtractor):
             "datasheet" in url_lower or
             "productfiche" in url_lower or
             "teddatasheet" in url_lower or
-            "datenblatt" in url_lower
+            "datenblatt" in url_lower or
+            "/product/pdf/" in url_lower  # Nexans specific pattern
         )

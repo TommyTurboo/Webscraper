@@ -30,7 +30,7 @@ def main():
     if len(sys.argv) > 1:
         html_file = sys.argv[1]
     else:
-        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\src\scrapers\HTML_Nexans_Draad16.txt"
+        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\secrets-backup\HTML_SIE_DISCON_MAIN_SERIES.html"
     print(f"📄 Input: {html_file}")
     
     if not os.path.exists(html_file):

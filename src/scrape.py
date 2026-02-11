@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
-Playwright HTML Scraper
------------------------
+Playwright HTML Scraper (Enhanced Anti-Detection Version)
+----------------------------------------------------------
 Scrapes complete rendered HTML from product pages using Playwright (sync API).
-Captures the full DOM via document.documentElement.outerHTML after JavaScript rendering.
-Supports single URL, batch URLs from file, headful/headless modes, and custom waits/selectors.
+Features:
+- Playwright Stealth (anti-bot detection)
+- Random delays (human behavior simulation)
+- User-Agent rotation
+- Cookie banner handling
+- Click automation for tabs/buttons
 """
 
 import argparse
@@ -18,38 +22,28 @@ from typing import List, Optional
 from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
-from playwright_stealth import stealth_sync
+from playwright_stealth import Stealth
 from fake_useragent import UserAgent
 
 
 def parse_args():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
-        description="Scrape rendered HTML from URLs using Playwright",
+        description="Scrape rendered HTML from URLs using Playwright (Anti-Bot Enhanced)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Single URL in headful mode (default, for debugging)
-  python src/scrape.py --url https://example.com/product
+  # Single URL in headful mode
+  python src/scrape_v2.py --url https://example.com/product --headful
 
-  # Single URL in headless mode
-  python src/scrape.py --url https://example.com/product --headless
+  # Siemens with tab click
+  python src/scrape_v2.py --url "https://sieportal.siemens.com/..." --click "Technische gegevens" --headful
 
-  # Batch URLs from file
-  python src/scrape.py --urls urls.txt --headless
-
-  # Wait for specific selector before scraping
-  python src/scrape.py --url https://example.com --selector "#product-details"
-
-  # Extra wait time after page load
-  python src/scrape.py --url https://example.com --wait 2000
-
-  # Custom output folder and retries
-  python src/scrape.py --url https://example.com --out my_output --retries 3
+  # Batch URLs from file (headless, stealthy)
+  python src/scrape_v2.py --urls urls.txt --headless --wait 3000
         """
     )
-    
-    # URL input
+      # URL input
     url_group = parser.add_mutually_exclusive_group(required=True)
     url_group.add_argument('--url', help='Single URL to scrape')
     url_group.add_argument('--urls', help='Path to text file with URLs (one per line)')
@@ -184,11 +178,11 @@ def scrape_one_url(
         try:
             if attempt > 0:
                 print(f"  🔄 Retry {attempt}/{retries}...")
-              with sync_playwright() as p:
+            
+            with sync_playwright() as p:
                 # Launch browser
                 browser = p.chromium.launch(headless=is_headless)
-                
-                # Generate random User-Agent for this session
+                  # Generate random User-Agent for this session
                 user_agent = get_random_user_agent()
                 
                 # Create context with realistic settings
@@ -202,15 +196,16 @@ def scrape_one_url(
                 page = context.new_page()
                 
                 # Apply stealth mode to avoid bot detection
-                stealth_sync(page)
-                  try:
+                stealth_obj = Stealth()
+                stealth_obj.use_sync(page)
+                
+                try:
                     # Navigate to URL
                     print(f"  📡 Loading: {url}")
                     page.goto(url, wait_until='networkidle', timeout=timeout)
                     
                     # Try to close cookie banner if present
                     try:
-                        # Common cookie banner close buttons
                         cookie_selectors = [
                             'button[data-testid="uc-accept-all-button"]',
                             'button:has-text("Accepteren")',
@@ -221,7 +216,7 @@ def scrape_one_url(
                             try:
                                 page.click(cookie_sel, timeout=2000)
                                 print(f"  🍪 Cookie banner closed")
-                                random_delay(400, 800)  # Short random pause after closing cookie
+                                random_delay(400, 800)  # Short random pause
                                 break
                             except:
                                 continue
@@ -234,38 +229,63 @@ def scrape_one_url(
                         try:
                             # Try as CSS selector first
                             if click_target.startswith('.') or click_target.startswith('#') or click_target.startswith('['):
-                                page.click(click_target, timeout=10000)                            else:
+                                page.click(click_target, timeout=10000)
+                            else:
                                 # Try as text content with force click to bypass overlays
                                 page.get_by_text(click_target, exact=False).first.click(timeout=10000, force=True)
                             
-                            # Wait a bit for content to load after click with random delay
+                            # Wait for content to load after click with random delay
                             random_delay(800, 1500)
                         except Exception as e:
                             print(f"  ⚠️  Could not click '{click_target}': {e}")
-                    
-                    # Wait for selector if specified
+                      # Wait for selector if specified
                     if selector:
                         print(f"  ⏳ Waiting for selector: {selector}")
                         page.wait_for_selector(selector, timeout=30000)
                     
-                    # Extra wait if specified
+                    # Scroll down to trigger lazy loading
+                    print(f"  📜 Scrolling to load lazy content...")
+                    page.evaluate("""
+                        async () => {
+                            await new Promise((resolve) => {
+                                let totalHeight = 0;
+                                let distance = 100;
+                                let scrollDelay = 100;
+                                
+                                let timer = setInterval(() => {
+                                    let scrollHeight = document.body.scrollHeight;
+                                    window.scrollBy(0, distance);
+                                    totalHeight += distance;
+                                    
+                                    if(totalHeight >= scrollHeight){
+                                        clearInterval(timer);
+                                        // Scroll back to top
+                                        window.scrollTo(0, 0);
+                                        resolve();
+                                    }
+                                }, scrollDelay);
+                            });
+                        }
+                    """)
+                    
+                    # Extra wait after scrolling to ensure content is loaded
+                    random_delay(1000, 1500)
+                      # Extra wait if specified
                     if wait_ms > 0:
                         print(f"  ⏳ Extra wait: {wait_ms}ms")
                         time.sleep(wait_ms / 1000.0)
-                    
-                    # Get the complete rendered HTML
+                      # Get the complete rendered HTML
                     print(f"  📄 Extracting HTML...")
                     html = page.evaluate("() => document.documentElement.outerHTML")
                     
                     # Generate safe filename
                     filename = safe_filename_from_url(url)
-                    output_path = os.path.join(output_dir, filename)
+                    html_path = os.path.join(output_dir, filename)
                     
-                    # Save to file
-                    with open(output_path, 'w', encoding='utf-8') as f:
+                    # Save HTML file
+                    with open(html_path, 'w', encoding='utf-8') as f:
                         f.write(html)
-                    
-                    print(f"  ✅ Saved: {output_path}")
+                    print(f"  ✅ Saved HTML: {html_path}")
                     
                     return True
                     
@@ -295,7 +315,7 @@ def main():
     args = parse_args()
       # Banner
     print("=" * 70)
-    print("Playwright HTML Scraper")
+    print("Playwright HTML Scraper (Anti-Bot Enhanced)")
     print("=" * 70)
       # Show mode
     mode = "HEADLESS" if args.is_headless else "HEADFUL"
@@ -307,15 +327,15 @@ def main():
         print(f"⏳ Extra wait: {args.wait}ms")
     if args.selector:
         print(f"🎯 Selector: {args.selector}")
-    else:
-        print(f"🎯 Selector: None")
     if args.click:
         print(f"🖱️  Click target: {args.click}")
+    print("✨ Anti-Bot Features: Stealth Mode + Random Delays + UA Rotation")
     print("=" * 70)
     
     # Ensure output directory exists
     ensure_dir(args.out)
-      # Get list of URLs
+    
+    # Get list of URLs
     if args.url:
         urls = [args.url]
     else:
@@ -326,7 +346,6 @@ def main():
     # Scrape each URL
     success_count = 0
     fail_count = 0
-    
     for idx, url in enumerate(urls, 1):
         print(f"\n[{idx}/{len(urls)}] Processing: {url}")
         
