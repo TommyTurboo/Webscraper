@@ -1,6 +1,0 @@
-2026/02/15-08:03:30.510 20154 Reusing MANIFEST c:\Users\tomva\PlatformIO\my-node-project\PyScraper\browser_profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
-2026/02/15-08:03:30.510 20154 Recovering log #201
-2026/02/15-08:03:30.512 20154 Reusing old log c:\Users\tomva\PlatformIO\my-node-project\PyScraper\browser_profile\Default\EdgeCoupons/coupons_data.db/000201.log 
-2026/02/15-08:03:30.546 202cc Level-0 table #206: started
-2026/02/15-08:03:30.549 202cc Level-0 table #206: 681747 bytes OK
-2026/02/15-08:03:30.551 202cc Delete type=0 #201

@@ -39,6 +39,14 @@ Thumbs.db
 # Playwright
 playwright-report/
 test-results/
+# Browser profiles (Huge cache files)
+**/browser_profile/
+browser_profile/
+
+# Scraper Output Data
+MainScraperEngine/data/output/
+PyScraper/data/output/
+**/data/output/
 
 # Secrets
 secrets.ini
