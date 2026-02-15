@@ -1,0 +1,9 @@
+2026/02/15-07:56:23.510 1910c Reusing MANIFEST c:\Users\tomva\PlatformIO\my-node-project\PyScraper\browser_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/02/15-07:56:23.514 1910c Recovering log #93
+2026/02/15-07:56:23.522 1910c Level-0 table #97: started
+2026/02/15-07:56:23.538 1910c Level-0 table #97: 1696806 bytes OK
+2026/02/15-07:56:23.540 1910c Recovering log #96
+2026/02/15-07:56:23.550 1910c Level-0 table #98: started
+2026/02/15-07:56:23.578 1910c Level-0 table #98: 1716081 bytes OK
+2026/02/15-07:56:23.594 1910c Delete type=0 #93
+2026/02/15-07:56:23.594 1910c Delete type=0 #96

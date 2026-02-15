@@ -69,7 +69,7 @@ siemens:
       base_url: "https://sieportal.siemens.com" # Voeg base_url toe voor relatieve links
       fields:
         # Artikelnummer (uit titel link)
-        title: ".catalog-list-item__identifier a"
+        item_reference: ".catalog-list-item__identifier a"
         # URL naar detailpagina (scraper gebruikt automatisch base_url indien aanwezig)
         url: ".catalog-list-item__identifier a"
         # Omschrijving: Selector versimpeld om zeker te zijn dat tekst gepakt wordt
@@ -228,7 +228,32 @@ phoenix:
       target_section: "Downloads"
       target_key: "PDF Datasheet"
       realm: "be"
-      locale: "nl-BE"
+      locale: "en-BE"
+
+    - type: "product_variants"
+      # AANGEPAST: Container verruimd naar body zodat hij ALLE items in een concatenated file vindt
+      # (Oorspronkelijk was dit #se-result-area__articles, wat bij merged HTML stopt na de eerste pagina)
+      container: "body"
+      variant_selector: "article.se-result-pos"
+      base_url: "https://www.phoenixcontact.com"
+      fields:
+        # Artikelnummer (hier gevonden in subtitle, dit is de unieke 30xxxxx code)
+        item_reference: ".se-result-pos-subtitle"
+        # Titel / Type omschrijving
+        title: ".se-result-pos-item-title span"
+        # URL naar detailpagina
+        url: "a.se-result-pos-item-title"
+        # Omschrijving
+        description: ".se-clipped-description"
+        # Afbeelding
+        image: ".se-pic img"
+        # Price extraction configuration (Phoenix Contact)
+        # Note: Price is inside a web component (Shadow DOM) and not directly accessible via simple CSS selectors in the initial HTML.
+        # We target the component itself for potential custom extraction.
+        list_price: ".sh-ListPrice" 
+        your_price: ".sh-DisplayUnitPrice__amount"
+        # ✨ NIEUW: Availability
+        availability: ".sh-AvailabilityTitle__text"
 
 abb:
   name: "ABB"
@@ -270,6 +295,8 @@ schneider:
   
   detect:
     - selector: "[plain-all-data]"  # Schneider gebruikt JSON-in-attribute
+    - selector: "product-cards-wrapper" # Uniek voor lijst pagina's
+    - class_contains: "product-card"    # Uniek voor lijst items
     - text_contains: "schneider electric"
     - class_contains: "schneider"
   
@@ -306,6 +333,22 @@ schneider:
           preferred_resolution: "rendition_369_jpg"
           target_section: "Product Info"
           target_key: "Image URL"
+
+    # ✨ 2. Product Variants (List Mode)
+    - type: "product_variants"
+      variant_selector: "article.product-card" # Specifieke selector voor de kaart
+      base_url: "https://www.se.com" 
+      fields:
+        # Title = Artikelnummer (volgens jouw voorbeeld: GVSUPS60KRHS)
+        title: "a.commercial-reference-link"
+        # Article Number = ook Artikelnummer
+        article_number: "a.commercial-reference-link"
+        # URL = Link op het artikelnummer
+        url: "a.commercial-reference-link"
+        # Description = De lange omschrijving (Galaxy VS UPS...)
+        description: "h3.description-link__content"
+        # Image = De lazy img tag binnen de pes-lazy-img wrapper
+        image: "pes-lazy-img img.lazy-img"
 
 # ═══════════════════════════════════════════════════════════════
 # GENERIEKE FALLBACK - Wordt gebruikt als geen vendor matcht

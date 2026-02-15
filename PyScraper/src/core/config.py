@@ -1,4 +1,11 @@
+import os
+from pathlib import Path
+
 class Config:
+    # Paths
+    # PyScraper root (assuming config.py is in src/core/)
+    BASE_DIR = Path(__file__).parent.parent.parent
+
     # Browser settings
     VIEWPORT = {'width': 1920, 'height': 1080}
     LOCALE = 'en-BE'

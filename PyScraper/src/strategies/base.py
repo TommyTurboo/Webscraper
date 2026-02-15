@@ -23,6 +23,7 @@ class BaseStrategy:
         self.perform_actions(page)
         
         # Altijd scrollen voor lazy loading
+        self.random_delay() # Extra delay voor scrollen
         self.scroll_to_bottom(page)
         
         # HTML ophalen

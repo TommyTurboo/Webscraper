@@ -37,8 +37,8 @@ class ScrapeEngine:
         page = context.new_page()
         
         # Activeer stealth
-        stealth = Stealth()
-        stealth.use_sync(page)
+        # stealth = Stealth()
+        # stealth.use_sync(page)
 
         try:
             # 3. Voer strategie uit

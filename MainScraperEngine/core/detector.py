@@ -55,7 +55,7 @@ def detect_vendor(soup: BeautifulSoup, configs: Dict) -> Optional[str]:
     )
     
     for vendor_key, config in sorted_vendors:
-        detect_rules = config.get("detect", [])
+        detect_rules = config.get("detect") or []
         
         for rule in detect_rules:
             matched = False

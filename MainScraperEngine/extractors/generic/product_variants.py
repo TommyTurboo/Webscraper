@@ -51,7 +51,11 @@ class ProductVariantsExtractor(BaseExtractor):
                     variant_info["title"] = clean_text(title_elem.get_text(" ", strip=True))
             
             # Extract reference
-            if "ref" in fields_config:
+            if "item_reference" in fields_config:
+                ref_elem = variant_elem.select_one(fields_config["item_reference"])
+                if ref_elem:
+                    variant_info["item_reference"] = clean_text(ref_elem.get_text(" ", strip=True))
+            elif "ref" in fields_config:
                 ref_elem = variant_elem.select_one(fields_config["ref"])
                 if ref_elem:
                     variant_info["ref"] = clean_text(ref_elem.get_text(" ", strip=True))
@@ -79,7 +83,19 @@ class ProductVariantsExtractor(BaseExtractor):
 
             # Extract List Price
             if "list_price" in fields_config:
-                price_elem = variant_elem.select_one(fields_config["list_price"])
+                price_selector = fields_config["list_price"]
+                price_elem = variant_elem.select_one(price_selector)
+                
+                # Fallback check for shadow DOM templates
+                if not price_elem:
+                    for tmpl in variant_elem.find_all('template'):
+                        # Check inside template content
+                        # Since BS4 parses template content as child tags usually:
+                        found = tmpl.select_one(price_selector)
+                        if found:
+                            price_elem = found
+                            break
+
                 if price_elem:
                     # Remove potential noise like "/" or "per Piece" from text
                     text = clean_text(price_elem.get_text(" ", strip=True))
@@ -90,9 +106,49 @@ class ProductVariantsExtractor(BaseExtractor):
 
             # Extract Your Price
             if "your_price" in fields_config:
-                price_elem = variant_elem.select_one(fields_config["your_price"])
+                price_selector = fields_config["your_price"]
+                # 1. Try direct selection (works if no shadow, or if parsed flat)
+                price_elem = variant_elem.select_one(price_selector)
+                
+                # 2. Fallback check for shadow DOM templates
+                if not price_elem:
+                    # Check ALL 'sh-product-price' elements or just look for ANY template
+                    # Looking specifically inside sh-product-price might be safer if we knew
+                    # But generic search in templates is fine.
+                    
+                    for tmpl in variant_elem.find_all('template'):
+                        # Try select_one directly on the template tag
+                        found = tmpl.select_one(price_selector)
+                        if found:
+                            price_elem = found
+                            break
+                        
+                        # If not found, try parsing the template content as HTML string
+                        if tmpl.string:
+                            try:
+                                template_soup = BeautifulSoup(tmpl.string, 'html.parser')
+                                found = template_soup.select_one(price_selector)
+                                if found:
+                                    price_elem = found
+                                    break
+                            except Exception:
+                                pass
+                
                 if price_elem:
-                    variant_info["your_price"] = clean_text(price_elem.get_text(" ", strip=True))
+                    # ✨ NEW FIX: Handle price format "304,17" -> "304.17" or standard currency cleaning
+                    raw_price = clean_text(price_elem.get_text(" ", strip=True))
+                    # If empty, maybe it was hidden?
+                    if raw_price:
+                         variant_info["your_price"] = raw_price
+                    else:
+                        # Sometimes text is in data attribute or value
+                        pass
+
+            # ✨ NEW: Extract Availability
+            if "availability" in fields_config:
+                avail_elem = variant_elem.select_one(fields_config["availability"])
+                if avail_elem:
+                    variant_info["availability"] = clean_text(avail_elem.get_text(" ", strip=True))
 
             # Extract specs (nested)
             if "specs" in fields_config:

@@ -9,6 +9,8 @@
 import os
 import sys
 import json
+import re
+from datetime import datetime
 
 # Force UTF-8 encoding for Windows console
 if sys.platform == "win32":
@@ -30,7 +32,7 @@ def main():
     if len(sys.argv) > 1:
         html_file = sys.argv[1]
     else:
-        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\secrets-backup\HTML_SIE_DISCON_MAIN_SERIES.html"
+        html_file = r"C:\Users\tomva\PlatformIO\my-node-project\secrets-backup\HTML_Phoenix_EBEV_SERIE.html"
     print(f"📄 Input: {html_file}")
     
     if not os.path.exists(html_file):
@@ -56,13 +58,35 @@ def main():
 
     # Metadata info
     metadata = result.get("metadata", {})
-    if "canonical_url" in metadata:
-        print(f"   - URL: {metadata['canonical_url']}")    
+    canonical_url = metadata.get("canonical_url", "")
+    
+    if canonical_url:
+        print(f"   - URL: {canonical_url}")    
         print(f"   - Extractie: {metadata.get('extraction_timestamp', 'Unknown')}")
     
-    # Save to JSON in MainScraperEngine directory
+    # OUTPUT DIRECTORY STRUCTURE
+    # Format: YYmmdd_CanonicalUrlSanitized.json
+    date_str = datetime.now().strftime("%y%m%d")
+    
+    # Sanitize URL for filename
+    # Remove protocol, replace non-alphanumeric with _, trim
+    if canonical_url:
+        safe_name = re.sub(r'https?://(www\.)?', '', canonical_url)
+        safe_name = re.sub(r'[^\w\-_]', '_', safe_name)
+        # Limit length to avoid OS limits
+        safe_name = safe_name[:100]
+    else:
+        safe_name = "unknown_url"
+
+    file_name = f"{date_str}_{safe_name}.json"
+    
+    # Base output dir in workspace
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    output_file = os.path.join(script_dir, "config_scraped_output.json")
+    # Direct in MainScraperEngine/data/output
+    target_dir = os.path.join(script_dir, "data", "output")
+    os.makedirs(target_dir, exist_ok=True)
+    
+    output_file = os.path.join(target_dir, file_name)
     
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
